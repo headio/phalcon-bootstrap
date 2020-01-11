@@ -1,0 +1,52 @@
+{
+  "name": "proof247/phalcon-bootstrap",
+  "description": "A flexible application bootstrap for phalcon projects.",
+  "type": "library",
+  "keywords" : [
+    "Phalcon", 
+    "Application bootstrap"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name":"Dominic Beck",
+      "email":"dominic@headcrumbs.io",
+      "homepage":"https://headcrumbs.io"
+    }
+  ],
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "platform": {
+      "php": "7.2"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "ext-phalcon": ">=3.4.0 < 4.0",
+    "symfony/console": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Headio\\Phalcon\\Bootstrap\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Integration\\": "tests/integration/",
+      "Unit\\": "tests/unit/",
+      "Stub\\": "tests/_data/_stub/",
+      "Module\\": "tests/_support/Module/"
+    }
+  },
+  "require-dev": {
+    "codeception/codeception": "^4.0",
+    "codeception/module-asserts": "^1.1",
+    "codeception/module-phalcon": "^1.0",
+    "codeception/specify": "^1.2",
+    "codeception/verify": "^1.2",
+    "mockery/mockery": "^1.3"
+  }
+}

@@ -1,0 +1,29 @@
+# app
+docs/
+
+# dev
+vendor/
+composer.lock
+*.lock
+*-lock.json
+*.env
+*.bak
+
+# editors
+.vscode/*
+nbprojects
+.project
+
+# logs / db
+*.log
+
+# codeception
+/tests/_output/*
+
+# Mac OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db

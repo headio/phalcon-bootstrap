@@ -1,0 +1,8 @@
+actor: IntegrationTester
+modules:
+    enabled:
+        - Asserts
+        - \Helper\Integration
+        - Phalcon:
+            bootstrap: tests/_boot/Cli.php
+    step_decorators: ~
