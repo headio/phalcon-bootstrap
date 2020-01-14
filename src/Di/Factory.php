@@ -58,6 +58,7 @@ class Factory implements FactoryInterface
     {
         /** @var Config */
         $config = $this->config;
+        $config->cli = false;
 
         if ($di instanceof Cli) {
             $config->cli = true;
