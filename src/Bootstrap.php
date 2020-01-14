@@ -13,6 +13,7 @@ namespace Headio\Phalcon\Bootstrap;
 
 use Headio\Phalcon\Bootstrap\Application\{ Factory, FactoryInterface };
 use Phalcon\DiInterface;
+use Phalcon\Http\ResponseInterface;
 
 class Bootstrap implements BootstrapInterface
 {
@@ -37,7 +38,7 @@ class Bootstrap implements BootstrapInterface
     /**
      * Run the application
      * 
-     * @return Phalcon\Http\ResponseInterface|bool
+     * @return ResponseInterface|bool
      */
     public function run(?int $context = null)
     {
