@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Stub\Service;
 
-use Headio\Phalcon\Bootstrap\Exception\OutOfRangeException;
+use Headio\Phalcon\Bootstrap\Exception\OutOfBoundsException;
 use Phalcon\Config;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\DiInterface;
@@ -44,11 +44,11 @@ class Router implements ServiceProviderInterface
                 }
 
                 if (!isset($config->modules)) {
-                    throw new OutOfRangeException('Undefined modules');
+                    throw new OutOfBoundsException('Undefined modules');
                 }
 
                 if (!isset($config->routes)) {
-                    throw new OutOfRangeException('Undefined routes');
+                    throw new OutOfBoundsException('Undefined routes');
                 }
 
                 $service = new MvcService(false);

@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap\Application;
 
-use Headio\Phalcon\Bootstrap\Exception\OutOfRangeException;
+use Headio\Phalcon\Bootstrap\Exception\OutOfBoundsException;
 use Phalcon\Cli\Console;
 use Phalcon\Mvc\{ Application, Micro };
 use Phalcon\DiInterface;
@@ -83,7 +83,7 @@ class Factory implements FactoryInterface
         $handlers = $config->path('handlerPath', null);
 
         if (is_null($handlers) || !file_exists($handlers)) {
-            throw new OutOfRangeException('Could not load application handlers');
+            throw new OutOfBoundsException('Could not load application handlers');
         }
 
         require($handlers);

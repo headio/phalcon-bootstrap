@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace Unit\Task;
+namespace Integration;
 
 use Phalcon\Cli\Dispatcher\Exception as DispatcherException;
 use Phalcon\Di;

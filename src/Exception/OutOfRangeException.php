@@ -9,6 +9,6 @@
  */
 namespace Headio\Phalcon\Bootstrap\Exception;
 
-class OutOfRangeException extends \OutOfRangeException implements ExceptionInterface
+class OutOfBoundsException extends \OutOfBoundsException implements ExceptionInterface
 {
 }

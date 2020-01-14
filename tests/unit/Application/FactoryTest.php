@@ -14,7 +14,7 @@ namespace Unit\Application;
 use Headio\Phalcon\Bootstrap\Application\Factory;
 use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Headio\Phalcon\Bootstrap\Exception\OutOfRangeException;
+use Headio\Phalcon\Bootstrap\Exception\OutOfBoundsException;
 use Phalcon\Config;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Application;
@@ -61,7 +61,7 @@ class FactoryTest extends UnitTest
 
     public function testFactoryCanNotCreateMicroApplication() : void
     {
-        $this->expectException(OutOfRangeException::class);
+        $this->expectException(OutOfBoundsException::class);
 
         $this->expectExceptionMessage('Could not load application handlers');
 
