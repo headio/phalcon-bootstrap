@@ -1,0 +1,31 @@
+language: php
+
+php:
+    - 7.2
+
+env:
+  global:
+    - PHALCON_VERSION="v3.4.5"
+
+git:
+  depth: 1
+
+matrix:
+  fast_finish: true
+
+cache:
+  timeout: 604800
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
+  - '(cd cphalcon/build; bash install &>/dev/null && phpenv config-add ../tests/_ci/phalcon.ini &> /dev/null && cd ../..;)'
+  - travis_retry composer update --no-interaction --no-progress --no-ansi --no-suggest
+
+script:
+  - vendor/bin/codecept run --coverage --coverage-text
+
+notifications:
+  email:
+    - dominic@headcrumbs.io
