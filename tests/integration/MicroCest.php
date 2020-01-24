@@ -97,7 +97,7 @@ class MicroCest
             'locale' => 'en_GB',
             'handlerPath' => TEST_STUB_DIR . 'Config' . 
                 DIRECTORY_SEPARATOR . 
-                'handlers.php',
+                'Handlers.php',
             'middleware' => [
                 NotFoundMiddleware::class => 'before'
             ],

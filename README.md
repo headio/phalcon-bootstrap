@@ -85,7 +85,7 @@ return [
         DIRECTORY_SEPARATOR . 'Var' .
         DIRECTORY_SEPARATOR . 'Log' .
         DIRECTORY_SEPARATOR,
-    'handlerPath' => __DIR__ . DIRECTORY_SEPARATOR . 'handlers.php',
+    'handlerPath' => __DIR__ . DIRECTORY_SEPARATOR . 'Handlers.php',
     'middleware' => [
         NotFoundMiddleware::class => 'before'
     ],

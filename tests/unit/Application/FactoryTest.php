@@ -94,7 +94,7 @@ class FactoryTest extends UnitTest
                             [
                                 'handlerPath' => TEST_STUB_DIR . 'Config' . 
                                     DIRECTORY_SEPARATOR . 
-                                    'handlers.php'
+                                    'Handlers.php'
                             ]
                         )
                     )
@@ -217,7 +217,7 @@ class FactoryTest extends UnitTest
                         [
                             'handlerPath' => TEST_STUB_DIR . 'Config' . 
                                 DIRECTORY_SEPARATOR . 
-                                'handlers.php',
+                                'Handlers.php',
                             'middleware' => [
                                 NotFoundMiddleware::class => 'before'
                             ],
@@ -290,7 +290,7 @@ class FactoryTest extends UnitTest
                         [
                             'handlerPath' => TEST_STUB_DIR . 'Config' . 
                                 DIRECTORY_SEPARATOR . 
-                                'handlers.php',
+                                'Handlers.php',
                             'middleware' => [
                                 NotFoundMiddleware::class => 'before'
                             ]
