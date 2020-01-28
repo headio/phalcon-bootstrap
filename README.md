@@ -1,6 +1,8 @@
 # Phalcon application bootstrap
 
-A flexible application bootstrap for Phalcon-based projects.  
+A flexible application bootstrap for Phalcon-based projects  
+
+[![Build Status](https://travis-ci.com/headio/phalcon-bootstrap.svg?branch=master)](https://travis-ci.com/headio/phalcon-bootstrap)
 
 ## Description
 
