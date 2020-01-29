@@ -24,7 +24,18 @@ install:
   - travis_retry composer update --no-interaction --no-progress --no-ansi --no-suggest
 
 script:
-  - vendor/bin/codecept run --coverage --coverage-text
+  - vendor/bin/codecept run --coverage --coverage-xml
+
+jobs:
+  include:
+    - stage: Test coverage
+      if: branch = master AND type = push
+      php: 7.2
+      script:
+        - make coverage
+      after_script:
+        - composer global require php-coveralls/php-coveralls ^2.2
+        - ~/.composer/vendor/bin/php-coveralls --verbose --config tests/.coveralls.yml
 
 notifications:
   email:
