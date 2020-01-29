@@ -2,7 +2,7 @@
 
 A flexible application bootstrap for Phalcon-based projects  
 
-[![Build Status](https://travis-ci.com/headio/phalcon-bootstrap.svg?branch=master)](https://travis-ci.com/headio/phalcon-bootstrap)
+[![Build Status](https://travis-ci.com/headio/phalcon-bootstrap.svg?branch=master)](https://travis-ci.com/headio/phalcon-bootstrap) [![Coverage Status](https://coveralls.io/repos/github/headio/phalcon-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/headio/phalcon-bootstrap?branch=master)
 
 ## Description
 
