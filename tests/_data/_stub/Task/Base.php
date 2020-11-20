@@ -20,7 +20,7 @@ use Symfony\Component\Console\Helper\{ Table, TableSeparator };
 use function implode;
 use Throwable;
 
-class BaseTask extends Task
+class Base extends Task
 {
     /**
      * @var ConsoleOutput

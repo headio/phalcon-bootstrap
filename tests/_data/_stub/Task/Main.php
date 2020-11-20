@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Stub\Task;
 
-use Stub\Task\BaseTask;
+use Stub\Task\Base as BaseTask;
 
 class Main extends BaseTask
 {

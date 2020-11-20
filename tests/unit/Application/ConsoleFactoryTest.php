@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace Unit\application;
+namespace Unit\Application;
 
 use Headio\Phalcon\Bootstrap\Application\Factory;
 use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
