@@ -5,7 +5,7 @@ php:
 
 env:
   global:
-    - PHALCON_VERSION="v4.0"
+    - PHALCON_VERSION="v4.0.0"
 
 git:
   depth: 1
@@ -19,6 +19,7 @@ cache:
     - $HOME/.composer/cache
 
 install:
+  - pecl install --force psr
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
   - '(cd cphalcon/build; bash install &>/dev/null && phpenv config-add ../tests/_ci/phalcon.ini &> /dev/null && cd ../..;)'
   - travis_retry composer update --no-interaction --no-progress --no-ansi --no-suggest
