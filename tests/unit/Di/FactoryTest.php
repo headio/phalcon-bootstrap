@@ -18,7 +18,7 @@ use Phalcon\Annotations\Adapter\Apcu;
 use Phalcon\Config;
 use Phalcon\Crypt;
 use Phalcon\Di;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\FactoryDefault\Cli;
 use Phalcon\Security;

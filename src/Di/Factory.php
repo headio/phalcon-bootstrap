@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Headio\Phalcon\Bootstrap\Di;
 
 use Phalcon\Config;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\FactoryDefault\Cli;
 
 /**
- * A simple factory providing dependency injection container instantiation, 
+ * A simple factory providing dependency injection container instantiation,
  * encapsulating the registration of service dependency definitions for
  * mvc, micro and cli applications.
  */

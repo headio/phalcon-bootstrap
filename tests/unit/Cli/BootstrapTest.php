@@ -16,7 +16,7 @@ use Headio\Phalcon\Bootstrap\Cli\BootstrapInterface;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
 use Phalcon\Config;
 use Phalcon\Di;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Mockery;
 use Module\UnitTest;
 
@@ -34,7 +34,7 @@ class BootstrapTest extends UnitTest
             function () {
                 $config = new Config($this->_config());
 
-                /** @var Phalcon\DiInterface */
+                /** @var Phalcon\Di\DiInterface */
                 $di = (new DiFactory($config))->createDefaultCli();
 
                 $mock = Mockery::mock(

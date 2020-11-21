@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap\Cli;
 
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 interface BootstrapInterface
 {
@@ -22,7 +22,7 @@ interface BootstrapInterface
 
     /**
      * Run the console application and return the response.
-     * 
+     *
      * @return Phalcon\Cli\TaskInterface|bool
      */
     public function run(array $server);

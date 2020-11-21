@@ -13,7 +13,7 @@ namespace Stub\Service;
 
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Crypt as Service;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 class Crypt implements ServiceProviderInterface
 {
@@ -23,7 +23,7 @@ class Crypt implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'crypt', 
+            'crypt',
             function () {
                 $config = $this->get('config');
                 $service = new Service();
@@ -31,7 +31,7 @@ class Crypt implements ServiceProviderInterface
                 $service->setCipher($config->security->encryption->cipher);
 
                 if (isset($config->security->encryption->useSigning)) {
-                    $service->useSigning($config->security->encryption->useSigning); 
+                    $service->useSigning($config->security->encryption->useSigning);
                 }
 
                 if (isset($config->security->encryption->padding)) {

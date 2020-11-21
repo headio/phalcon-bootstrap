@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Stub\Module\Admin;
 
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 
 class Module implements ModuleDefinitionInterface

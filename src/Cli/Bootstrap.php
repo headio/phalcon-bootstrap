@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap\Cli;
 
-use Headio\Phalcon\Bootstrap\Application\{ Factory, FactoryInterface };
-use Phalcon\DiInterface;
+use Headio\Phalcon\Bootstrap\Application\Factory;
+use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
+use Phalcon\Di\DiInterface;
 
 class Bootstrap implements BootstrapInterface
 {
@@ -36,7 +37,7 @@ class Bootstrap implements BootstrapInterface
 
     /**
      * {@inheritdoc}
-     * 
+     *
      * @return Phalcon\Cli\TaskInterface|bool
      */
     public function run(array $server)

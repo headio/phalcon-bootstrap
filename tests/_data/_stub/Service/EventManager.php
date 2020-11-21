@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Stub\Service;
 
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Events\Manager as EventsManager;
 
 class EventManager implements ServiceProviderInterface
@@ -23,7 +23,7 @@ class EventManager implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'eventsManager', 
+            'eventsManager',
             function () {
                 return new EventsManager();
             }

@@ -41,7 +41,7 @@ class User extends Controller
         $id = $this->filter->sanitize($id, 'absint');
         $response = new Response();
         $response
-            ->setStatusCode(200, 'OK')  
+            ->setStatusCode(200, 'OK')
             ->setJsonContent(
                 [
                     'data' => [
@@ -52,8 +52,7 @@ class User extends Controller
                         ]
                     ]
                 ]
-            )
-        ;
+            );
 
         return $response;
     }

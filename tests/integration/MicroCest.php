@@ -25,7 +25,7 @@ class MicroCest
 
     public function _before(IntegrationTester $I)
     {
-        /** @var Phalcon\DiInterface */
+        /** @var Phalcon\Di\DiInterface */
         $di = (new DiFactory(new Config($this->_config())))->createDefaultMvc();
 
         /** @var BootstrapInterface */
@@ -41,10 +41,13 @@ class MicroCest
     {
         $I->wantTo('Execute request on index action in user handler.');
 
-        $_GET['_url'] = '/';
+        $_SERVER['REQUEST_URI'] = '/';
 
         /** @var ResponseInterface */
-        $response = $this->bootstrap->run(Bootstrap::Micro);
+        $response = $this->bootstrap->run(
+            $_SERVER['REQUEST_URI'],
+            Bootstrap::Micro
+        );
 
         $I->assertInstanceOf(ResponseInterface::class, $response);
 
@@ -57,10 +60,13 @@ class MicroCest
     {
         $I->wantTo('Execute request on index action in user handler.');
 
-        $_GET['_url'] = '/users';
+        $_SERVER['REQUEST_URI'] = '/users';
 
         /** @var ResponseInterface */
-        $response = $this->bootstrap->run(Bootstrap::Micro);
+        $response = $this->bootstrap->run(
+            $_SERVER['REQUEST_URI'],
+            Bootstrap::Micro
+        );
 
         $I->assertInstanceOf(ResponseInterface::class, $response);
 
@@ -73,17 +79,20 @@ class MicroCest
     {
         $I->wantTo('Execute request on read action in user handler.');
 
-        $_GET['_url'] = '/users/1';
+        $_SERVER['REQUEST_URI'] = '/users/1';
 
         /** @var ResponseInterface */
-        $response = $this->bootstrap->run(Bootstrap::Micro);
+        $response = $this->bootstrap->run(
+            $_SERVER['REQUEST_URI'],
+            Bootstrap::Micro
+        );
 
         $I->assertInstanceOf(ResponseInterface::class, $response);
 
         $I->assertEquals(200, $response->getStatusCode());
 
         $I->assertEquals(
-            '{"data":{"type":"Users","id":1,"attributes":{"name":"John Doe"}}}', 
+            '{"data":{"type":"Users","id":1,"attributes":{"name":"John Doe"}}}',
             $response->getContent()
         );
     }
@@ -95,8 +104,8 @@ class MicroCest
     {
         return [
             'locale' => 'en_GB',
-            'handlerPath' => TEST_STUB_DIR . 'Config' . 
-                DIRECTORY_SEPARATOR . 
+            'handlerPath' => TEST_STUB_DIR . 'Config' .
+                DIRECTORY_SEPARATOR .
                 'Handlers.php',
             'middleware' => [
                 NotFoundMiddleware::class => 'before'

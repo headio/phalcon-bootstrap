@@ -12,7 +12,8 @@ declare(strict_types=1);
 namespace Headio\Phalcon\Bootstrap\Cli\Console;
 
 use Headio\Phalcon\Bootstrap\Exception\MissingDependencyException;
-use Phalcon\Cli\{ Console, TaskInterface };
+use Phalcon\Cli\Console;
+use Phalcon\Cli\TaskInterface;
 use Phalcon\Config;
 use function rewind;
 use function stream_get_contents;

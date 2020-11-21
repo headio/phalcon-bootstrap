@@ -14,9 +14,11 @@ namespace Stub\Task;
 use Headio\Phalcon\Bootstrap\Exception\MissingDependencyException;
 use Phalcon\Cli\Task;
 use Phalcon\Mvc\ModelInterface;
-use Phalcon\Mvc\Model\{ ResultsetInterface, ValidationFailed };
+use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\Model\ValidationFailed;
 use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
-use Symfony\Component\Console\Helper\{ Table, TableSeparator };
+use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Helper\TableSeparator;
 use function implode;
 use Throwable;
 
@@ -85,12 +87,12 @@ class Base extends Task
                 /** @var Array */
                 $validationErrors = $this->getValidationErrors($e->getRecord());
 
-                foreach($validationErrors as $key => $message) {
+                foreach ($validationErrors as $key => $message) {
                     $errors[] = $key . ': ' . $message;
                 }
 
                 if (!empty($errors)) {
-                    $exceptionMessage .= PHP_EOL . implode(' ' . PHP_EOL, $errors);  
+                    $exceptionMessage .= PHP_EOL . implode(' ' . PHP_EOL, $errors);
                 }
             }
         }

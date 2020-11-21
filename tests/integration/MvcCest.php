@@ -43,7 +43,9 @@ class MvcCest
         $_SERVER['REQUEST_URI'] = '/';
 
         /** @var ResponseInterface|bool */
-        $response = $this->bootstrap->run();
+        $response = $this->bootstrap->run(
+            $_SERVER['REQUEST_URI']
+        );
 
         $I->assertEquals('Hello world', $response->getContent());
     }
@@ -56,7 +58,9 @@ class MvcCest
         $_SERVER['REQUEST_URI'] = '/index/contact';
 
         /** @var ResponseInterface|bool */
-        $response = $this->bootstrap->run();
+        $response = $this->bootstrap->run(
+            $_SERVER['REQUEST_URI']
+        );
 
         $I->assertEquals('Hello contact', $response->getContent());
     }
@@ -69,7 +73,9 @@ class MvcCest
         $_SERVER['REQUEST_URI'] = '/foo/bar';
 
         /** @var ResponseInterface|bool */
-        $response = $this->bootstrap->run();
+        $response = $this->bootstrap->run(
+            $_SERVER['REQUEST_URI']
+        );
 
         $I->assertEquals('Hello world', $response->getContent());
     }
@@ -82,7 +88,9 @@ class MvcCest
         $_SERVER['REQUEST_URI'] = '/admin';
 
         /** @var ResponseInterface|bool */
-        $response = $this->bootstrap->run();
+        $response = $this->bootstrap->run(
+            $_SERVER['REQUEST_URI']
+        );
 
         $I->assertEquals('Hello admin world', $response->getContent());
     }

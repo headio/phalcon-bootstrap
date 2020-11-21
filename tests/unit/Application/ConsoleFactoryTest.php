@@ -16,7 +16,7 @@ use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
 use Headio\Phalcon\Bootstrap\Cli\ConsoleInterface;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
 use Phalcon\Config;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Mockery;
 use Module\UnitTest;
 

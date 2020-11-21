@@ -16,7 +16,7 @@ use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
 use Headio\Phalcon\Bootstrap\Exception\OutOfBoundsException;
 use Phalcon\Config;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Micro;
 use Mockery;

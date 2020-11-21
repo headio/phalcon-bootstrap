@@ -13,12 +13,10 @@ namespace Stub\Service;
 
 use Monolog\Logger as Service;
 use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\{
-    RotatingFileHandler,
-    StreamHandler
-};
+use Monolog\Handler\RotatingFileHandler;
+use Monolog\Handler\StreamHandler;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 class Logger implements ServiceProviderInterface
 {
@@ -28,7 +26,7 @@ class Logger implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'logger', 
+            'logger',
             function () {
                 $config = $this->get('config');
                 $formatter = new LineFormatter(
@@ -64,7 +62,6 @@ class Logger implements ServiceProviderInterface
                 $service->pushHandler($fileHandler);
 
                 return $service;
-
             }
         );
     }

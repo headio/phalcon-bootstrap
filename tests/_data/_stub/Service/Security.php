@@ -13,7 +13,7 @@ namespace Stub\Service;
 
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Security as Service;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 class Security implements ServiceProviderInterface
 {
@@ -23,7 +23,7 @@ class Security implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'security', 
+            'security',
             function () {
                 $config = $this->get('config');
                 $service = new Service();

@@ -13,7 +13,7 @@ namespace Stub\Service;
 
 use Phalcon\Config;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Events\EventInterface;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Loader as Service;
@@ -26,7 +26,7 @@ class Loader implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->set(
-            'loader', 
+            'loader',
             function () {
                 $config = $this->get('config');
                 $loader = new Service();

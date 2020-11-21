@@ -18,7 +18,7 @@ class Foo extends BaseTask
 {
     public function mainAction()
     {
-        $this->output->writeln("<info>Main action</info>");
+        $this->output->writeln('<info>Main action</info>');
 
         return 0;
     }
@@ -49,8 +49,8 @@ class Foo extends BaseTask
         return 0;
     }
 
-    public function listAction(array $args) : int
-    { 
+    public function listAction() : int
+    {
         $columns = ['id', 'label'];
         $this->table->setHeaders($columns);
         $this->table->addRows([
@@ -62,27 +62,21 @@ class Foo extends BaseTask
         return 0;
     }
 
-    public function createAction(array $args) : int
+    public function createAction() : int
     {
-        try {
-            if (!(isset($this->dispatcher->getOptions()['label']))) {
-                throw new BadMethodCallException('Missing value for option --label');
-            }
-
-            $this->output->writeln('<info>Role created</info>');
-            return 0;
-        } catch (Throwable $e) {
-            $exceptionMessage = $this->handleException($e);
-            $this->output->writeln('<error>' . $exceptionMessage . '</error>');
-            return 1;
+        if (!(isset($this->dispatcher->getOptions()['label']))) {
+            throw new BadMethodCallException('Missing value for option --label');
         }
+
+        $this->output->writeln('<info>Role created</info>');
+        return 0;
     }
 
-    public function searchAction(array $args) : int
+    public function searchAction() : int
     {
         $columns = ['id', 'label'];
 
-        if (array_key_exists("foo", array_flip($args))) {
+        if (isset($this->dispatcher->getOptions()['label'])) {
             return $this->displayView(
                 $columns,
                 [

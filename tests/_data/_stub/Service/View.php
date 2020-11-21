@@ -13,7 +13,7 @@ namespace Stub\Service;
 
 use Phalcon\Config;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Events\EventInterface;
 use Phalcon\Mvc\DispatcherInterface;
 use Phalcon\Mvc\View as Service;
@@ -29,7 +29,7 @@ class View implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'view', 
+            'view',
             function () {
                 $config = $this->get('config');
                 $service = new Service();

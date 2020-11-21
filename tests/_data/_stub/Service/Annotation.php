@@ -13,7 +13,7 @@ namespace Stub\Service;
 
 use Phalcon\Annotations\Adapter\Memory as Service;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 class Annotation implements ServiceProviderInterface
 {
@@ -23,7 +23,7 @@ class Annotation implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'annotations', 
+            'annotations',
             function () {
                 $config = $this->getConfig();
 

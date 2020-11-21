@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap;
 
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 interface BootstrapInterface
 {
@@ -24,8 +24,8 @@ interface BootstrapInterface
 
     /**
      * Run the mvc (or micro) application and return the response.
-     * 
-     * @return Phalcon\Mvc\ResponseInterface|bool
+     *
+     * @return Phalcon\Http\ResponseInterface|bool
      */
-    public function run(?int $context);
+    public function run(string $uri, ?int $context);
 }

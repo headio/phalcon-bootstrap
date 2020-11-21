@@ -13,8 +13,10 @@ namespace Integration;
 
 use Phalcon\Cli\Dispatcher\Exception as DispatcherException;
 use Phalcon\Di;
-use Stub\Task\{ Foo, Main };
+use Stub\Task\Foo;
+use Stub\Task\Main;
 use IntegrationTester;
+use BadMethodCallException;
 
 class ConsoleCest
 {
@@ -37,7 +39,7 @@ class ConsoleCest
 
     public function canExecuteCommandWithNoHandler(IntegrationTester $I)
     {
-        $I->wantTo('Execute console command with missing handler'); 
+        $I->wantTo('Execute console command with missing handler');
 
         /** @var ConsoleTester */
         $ct = $this->ct;
@@ -52,10 +54,10 @@ class ConsoleCest
         expect($ct->getOutput())->equals('Main action' . PHP_EOL);
     }
 
-    public function CanExecuteCommandOnDefaultHandler(IntegrationTester $I)
+    public function canExecuteCommandOnDefaultHandler(IntegrationTester $I)
     {
         $I->wantTo('Execute console command on default handler');
- 
+
         /** @var ConsoleTester */
         $ct = $this->ct;
         $ct->execute(
@@ -107,7 +109,7 @@ class ConsoleCest
         expect($ct->getOutput())->equals('Main action' . PHP_EOL);
     }
 
-    public function testCanExecuteNamedActionOnKnownHandler(IntegrationTester $I) 
+    public function canExecuteNamedActionOnKnownHandler(IntegrationTester $I)
     {
         $I->wantTo('Execute console command on known handler with named action');
 
@@ -126,7 +128,7 @@ class ConsoleCest
         expect($this->ct->getOutput())->equals('Another action' . PHP_EOL);
     }
 
-    public function testCanExecuteCommandOnUnknownHandler(IntegrationTester $I) 
+    public function canExecuteCommandOnUnknownHandler(IntegrationTester $I)
     {
         $I->expectThrowable(
             new DispatcherException('Stub\Task\Frontend handler class cannot be loaded', 2),
@@ -141,7 +143,7 @@ class ConsoleCest
         );
     }
 
-    public function testCanExecuteUnknownActionOnKnownHandler(IntegrationTester $I) 
+    public function canExecuteUnknownActionOnKnownHandler(IntegrationTester $I)
     {
         $I->expectThrowable(
             new DispatcherException("Action 'bar' was not found on handler 'Foo'", 5),
@@ -157,7 +159,7 @@ class ConsoleCest
         );
     }
 
-    public function testCanExecuteForwardingActionOnKnownHandler(IntegrationTester $I) 
+    public function canExecuteForwardingActionOnKnownHandler(IntegrationTester $I)
     {
         $I->wantTo('Execute console command on known handler with forwarding action');
 
@@ -176,7 +178,7 @@ class ConsoleCest
         expect($ct->getOutput())->equals('Another action' . PHP_EOL);
     }
 
-    public function testCanExecuteTableActionOnKnownHandler(IntegrationTester $I) 
+    public function canExecuteListActionOnKnownHandler(IntegrationTester $I)
     {
         $I->wantTo('Execute console command on known handler');
 
@@ -186,7 +188,8 @@ class ConsoleCest
             [
                 'boot.php',
                 'foo',
-                'list'
+                'list',
+                '--foo=bar'
             ]
         );
 
@@ -204,11 +207,11 @@ TABLE;
         expect($ct->getOutput())->equals($expected);
     }
 
-    public function canExecuteActionWithoutOptionsOnKnownHandler(IntegrationTester $I)
+    public function canExecuteCreateActionWithoutArgumentsOnKnownHandler(IntegrationTester $I)
     {
         $I->expectThrowable(
-            new \BadMethodCallException('Missing value for option --label'),
-            function () {           
+            new BadMethodCallException('Missing value for option --label'),
+            function () {
                 $this->ct->execute(
                     [
                         'boot.php',
@@ -220,9 +223,9 @@ TABLE;
         );
     }
 
-    public function testCanExecuteActionWithOptionsOnKnownHandler(IntegrationTester $I)
+    public function canExecuteCreateActionWithArgumentsOnKnownHandler(IntegrationTester $I)
     {
-        $I->wantTo('Execute console command on known handler action with options'); 
+        $I->wantTo('Execute console command on known handler action with options');
 
         /** @var ConsoleTester */
         $ct = $this->ct;
@@ -231,14 +234,14 @@ TABLE;
                 'boot.php',
                 'foo',
                 'create',
-                '--label=bar'
+                '--label=foo',
             ]
         );
 
         expect($this->ct->getOutput())->equals('Role created' . PHP_EOL);
     }
 
-    public function testCanExecuteSearchActionWithArgumentsOnKnownHandler(IntegrationTester $I)
+    public function canExecuteSearchActionWithArgumentsOnKnownHandler(IntegrationTester $I)
     {
         $I->wantTo('Execute console command on known action with arguments');
 
@@ -249,7 +252,7 @@ TABLE;
                 'boot.php',
                 'foo',
                 'search',
-                'foo'
+                '--label=foo'
             ]
         );
 
@@ -266,7 +269,7 @@ TABLE;
         expect($this->ct->getOutput())->equals($expected);
     }
 
-    public function testCanExecuteHelpActionOnKnownHandler(IntegrationTester $I)
+    public function canExecuteHelpActionOnKnownHandler(IntegrationTester $I)
     {
         $I->wantTo('Execute the console command on task menu action');
 
@@ -280,7 +283,7 @@ TABLE;
             ]
         );
 
-        $expected = 
+        $expected =
 <<<EOT
 =========================================================================
 Command line interface to Foo task

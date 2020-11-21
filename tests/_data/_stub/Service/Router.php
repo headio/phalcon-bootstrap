@@ -14,7 +14,7 @@ namespace Stub\Service;
 use Headio\Phalcon\Bootstrap\Exception\OutOfBoundsException;
 use Phalcon\Config;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Cli\Router as CliService;
 use Phalcon\Mvc\Router as MvcRouter;
 use Phalcon\Mvc\Router\Annotations as MvcService;
@@ -27,7 +27,7 @@ class Router implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'router', 
+            'router',
             function () {
                 $config = $this->get('config');
 
@@ -52,8 +52,7 @@ class Router implements ServiceProviderInterface
                 }
 
                 $service = new MvcService(false);
-                $service->setUriSource(MvcRouter::URI_SOURCE_SERVER_REQUEST_URI);
-                $service->setControllerSuffix(null);
+                $service->setControllerSuffix(''); // Remove default suffix
                 $service->removeExtraSlashes(true);
                 $service->setDefaultNamespace($config->dispatcher->defaultControllerNamespace);
                 $service->setDefaultModule($config->dispatcher->defaultModule);

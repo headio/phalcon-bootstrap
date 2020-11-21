@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Stub\Service;
 
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Events\EventInterface;
 use Phalcon\Cli\Dispatcher as CliService;
 use Phalcon\Mvc\Dispatcher as MvcService;
@@ -25,25 +25,26 @@ class Dispatcher implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'dispatcher', 
+            'dispatcher',
             function () {
                 $config = $this->get('config');
                 $eventsManager = $this->get('eventsManager');
 
                 if ($config->cli) {
                     $service = new CliService();
-                    $service->setTaskSuffix(null);
 
                     if (!empty($namespace = $config->dispatcher->path('defaultTaskNamespace', null))) {
                         $service->setDefaultNamespace($namespace);
                     }
 
+                    $service->setTaskSuffix('');
                     $service->setEventsManager($eventsManager);
+
                     return $service;
                 }
 
                 $service = new MvcService();
-                $service->setControllerSuffix(null);
+                $service->setControllerSuffix(''); // Remove default suffix
                 $service->setDefaultNamespace($config->dispatcher->defaultControllerNamespace);
                 $service->setEventsManager($eventsManager);
 

@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap;
 
-use Headio\Phalcon\Bootstrap\Application\{ Factory, FactoryInterface };
-use Phalcon\DiInterface;
+use Headio\Phalcon\Bootstrap\Application\Factory;
+use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Http\ResponseInterface;
 
 class Bootstrap implements BootstrapInterface
@@ -37,16 +38,16 @@ class Bootstrap implements BootstrapInterface
 
     /**
      * Run the application
-     * 
+     *
      * @return ResponseInterface|bool
      */
-    public function run(?int $context = null)
+    public function run(string $uri, ?int $context = null)
     {
         if ($context === Bootstrap::Micro) {
-            return $this->factory->createForMicro()->handle();
+            return $this->factory->createForMicro()->handle($uri);
         }
 
-        $response = $this->factory->createForMvc()->handle();
+        $response = $this->factory->createForMvc()->handle($uri);
 
         if ($response instanceof ResponseInterface) {
             return $response->send();

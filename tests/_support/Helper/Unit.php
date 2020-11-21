@@ -28,7 +28,7 @@ class Unit extends \Codeception\Module
         /** @var Config */
         $config = new Config($global);
 
-        /** @var Phalcon\DiInterface */
+        /** @var Phalcon\Di\DiInterface */
         $di = (new DiFactory($config))->createDefaultCli();
 
         /** @var Console */
