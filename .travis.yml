@@ -1,11 +1,11 @@
 language: php
 
 php:
-    - 7.2
+    - 7.4
 
 env:
   global:
-    - PHALCON_VERSION="v3.4.5"
+    - PHALCON_VERSION="v4.0"
 
 git:
   depth: 1
@@ -32,7 +32,7 @@ jobs:
   include:
     - stage: Test coverage
       if: branch = master AND type = push
-      php: 7.2
+      php: 7.4
       script:
         - make coverage
       after_script:

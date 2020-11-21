@@ -11,9 +11,9 @@ A simple factory instantiates the DI container, encapsulating the registration o
 
 ## Dependencies
 
-* PHP7.2+
-* Phalcon3.4+ < 4.0
-* Symfony console
+* PHP >=7.4 <8.0
+* Phalcon >=4.0
+* Symfony console >=5.0
 
 See composer.json for more details  
 
@@ -174,7 +174,7 @@ require_once __DIR__ . '/vendor/autoload.php';
     );
 
     // Run the application
-    return Bootstrap::handle($di)->run(Bootstrap::Micro);
+    return Bootstrap::handle($di)->run($_SERVER['REQUEST_URI'], Bootstrap::Micro);
 })();
 ```
 
@@ -343,7 +343,7 @@ require_once __DIR__ . '/vendor/autoload.php';
     );
 
     // Run the application
-    return Bootstrap::handle($di)->run();
+    return Bootstrap::handle($di)->run($_SERVER['REQUEST_URI']);
 })();
 ```
 
@@ -517,7 +517,7 @@ namespace Foo\Service;
 use Foo\Exception\OutOfRangeException;
 use Phalcon\Config;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Cli\Router as CliService;
 use Phalcon\Mvc\Router as MvcRouter;
 use Phalcon\Mvc\Router\Annotations as MvcService;
@@ -549,8 +549,6 @@ class Router implements ServiceProviderInterface
                 }
 
                 $service = new MvcService(false);
-                $service->setUriSource(MvcRouter::URI_SOURCE_SERVER_REQUEST_URI);
-                $service->setControllerSuffix(null);
                 $service->removeExtraSlashes(true);
                 $service->setDefaultNamespace($config->dispatcher->defaultControllerNamespace);
                 $service->setDefaultModule($config->dispatcher->defaultModule);
@@ -573,7 +571,7 @@ class Router implements ServiceProviderInterface
 }
 ```
 
-For complete control over the registration of service dependencies, or more generally, the services available in the container, you have two options: firstly, you can use Phalcon's base DI container, which is an empty container; or you can create your own DI container by implementing Phalcon's **Phalcon\DiInterface**. See the following for an example:
+For complete control over the registration of service dependencies, or more generally, the services available in the container, you have two options: firstly, you can use Phalcon's base DI container, which is an empty container; or you can create your own DI container by implementing Phalcon's **Phalcon\Di\DiInterface**. See the following for an example:
 
 ```php
 use Phalcon\Di;
@@ -590,7 +588,7 @@ $di = (new DiFactory($config))->create(new Di);
 $di = (new DiFactory($config))->create(new MyDi);
 ```
 
-The DI factory **create method** expects an instance of **Phalcon\DiInterface**.
+The DI factory **create method** expects an instance of **Phalcon\Di\DiInterface**.
 
 ## Application factory
 
@@ -629,7 +627,7 @@ try {
     // Do some stuff
 
     /** @var Phalcon\Mvc\ResponseInterface|bool */
-    $response = $app->handle();
+    $response = $app->handle($_SERVER['REQUEST_URI']);
 
     if ($response instanceof \Phalcon\Mvc\ResponseInterface) {
         return $response->send();
