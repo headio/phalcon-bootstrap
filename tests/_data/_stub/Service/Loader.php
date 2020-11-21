@@ -26,7 +26,7 @@ class Loader implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->set(
-            'loader', 
+            'loader',
             function () {
                 $config = $this->get('config');
                 $loader = new Service();

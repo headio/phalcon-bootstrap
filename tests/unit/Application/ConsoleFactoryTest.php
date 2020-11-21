@@ -91,7 +91,7 @@ class ConsoleFactoryTest extends UnitTest
     public function testFactoryCanRegisterEventListeners() : void
     {
         $this->specify(
-            'Event Manager has correct number of registered listeners', 
+            'Event Manager has correct number of registered listeners',
             function () {
                 /** @var Console */
                 $console = $this->mock->createForCli();
@@ -170,7 +170,7 @@ class ConsoleFactoryTest extends UnitTest
                     'path' => TEST_STUB_DIR . 'Module/C/Module.php'
                 ]
             ],
-           'services' => [
+            'services' => [
                 'Stub\Service\EventManager', // load first
                 'Stub\Service\Logger',
                 'Stub\Service\Dispatcher',

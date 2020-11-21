@@ -134,7 +134,7 @@ class Inflector
         '/s$/' => 's',
         '/^$/' => '',
         '/$/' => 's'
-        ];
+    ];
 
     /**
      * Array of regular expressions and corresponding replacement handling.
@@ -185,7 +185,7 @@ class Inflector
         '/eaus$/' => 'eau',
         '/^(.*us)$/' => '\\1',
         '/s$/i' => ''
-        ];
+    ];
 
     /**
      * Array of rules for handling special english language conversions
@@ -309,7 +309,7 @@ class Inflector
         'whiting' => 'whiting',
         'wildebeest' => 'wildebeest',
         'Yengeese' => 'Yengeese'
-        ];
+    ];
 
     /**
      * Array of uri component characters considered
@@ -426,9 +426,8 @@ class Inflector
         }
     }
 
-
     /**
-     * Normalize preferred language string format anomalies 
+     * Normalize preferred language string format anomalies
      * returned by the browser/client request.
      */
     public static function normalizeAcceptLanguage(string $locale) : string

@@ -52,8 +52,8 @@ class UnitTest extends Unit
     }
 
     /**
- 	 * Get inaccessible class property
- 	 */
+     * Get inaccessible class property
+     */
     protected function getClassProperty(string $class, string $name) : ?ReflectionProperty
     {
         $rc = new ReflectionClass($class);
@@ -63,7 +63,7 @@ class UnitTest extends Unit
         }
 
         if ($rc->hasProperty($name)) {
-            $prop = $rc->getProperty($name);	
+            $prop = $rc->getProperty($name);
             $prop->setAccessible(true);
             return $prop;
         }
@@ -73,7 +73,7 @@ class UnitTest extends Unit
 
     /**
      * Get inaccessible class method
-     * 
+     *
      * @param object
      * @param string
      */

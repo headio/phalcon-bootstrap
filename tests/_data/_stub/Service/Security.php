@@ -23,7 +23,7 @@ class Security implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'security', 
+            'security',
             function () {
                 $config = $this->get('config');
                 $service = new Service();

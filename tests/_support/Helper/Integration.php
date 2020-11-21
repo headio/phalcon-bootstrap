@@ -18,7 +18,7 @@ use Headio\Phalcon\Bootstrap\Cli\Console\ConsoleTester;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
 use Phalcon\Config;
 use Phalcon\Cli\Console;
-use Symfony\Component\Console\Output\StreamOutput; 
+use Symfony\Component\Console\Output\StreamOutput;
 use Codeception\Util\Debug;
 
 class Integration extends \Codeception\Module
@@ -104,10 +104,10 @@ class Integration extends \Codeception\Module
      */
     public function seeResponseEquals(string $content) : bool
     {
-       $this->assertEquals(
-           $content, 
-           $this->getModule('Phalcon')->_getResponseContent(),
-           "response payload"
+        $this->assertEquals(
+            $content,
+            $this->getModule('Phalcon')->_getResponseContent(),
+            'response payload'
         );
     }
 }

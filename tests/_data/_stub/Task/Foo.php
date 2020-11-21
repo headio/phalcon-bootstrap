@@ -18,7 +18,7 @@ class Foo extends BaseTask
 {
     public function mainAction()
     {
-        $this->output->writeln("<info>Main action</info>");
+        $this->output->writeln('<info>Main action</info>');
 
         return 0;
     }
@@ -50,7 +50,7 @@ class Foo extends BaseTask
     }
 
     public function listAction(array $args) : int
-    { 
+    {
         $columns = ['id', 'label'];
         $this->table->setHeaders($columns);
         $this->table->addRows([
@@ -82,7 +82,7 @@ class Foo extends BaseTask
     {
         $columns = ['id', 'label'];
 
-        if (array_key_exists("foo", array_flip($args))) {
+        if (array_key_exists('foo', array_flip($args))) {
             return $this->displayView(
                 $columns,
                 [

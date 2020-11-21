@@ -23,7 +23,7 @@ class EventManager implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'eventsManager', 
+            'eventsManager',
             function () {
                 return new EventsManager();
             }

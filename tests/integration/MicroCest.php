@@ -83,7 +83,7 @@ class MicroCest
         $I->assertEquals(200, $response->getStatusCode());
 
         $I->assertEquals(
-            '{"data":{"type":"Users","id":1,"attributes":{"name":"John Doe"}}}', 
+            '{"data":{"type":"Users","id":1,"attributes":{"name":"John Doe"}}}',
             $response->getContent()
         );
     }
@@ -95,8 +95,8 @@ class MicroCest
     {
         return [
             'locale' => 'en_GB',
-            'handlerPath' => TEST_STUB_DIR . 'Config' . 
-                DIRECTORY_SEPARATOR . 
+            'handlerPath' => TEST_STUB_DIR . 'Config' .
+                DIRECTORY_SEPARATOR .
                 'Handlers.php',
             'middleware' => [
                 NotFoundMiddleware::class => 'before'

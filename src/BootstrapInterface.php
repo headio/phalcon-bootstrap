@@ -24,8 +24,8 @@ interface BootstrapInterface
 
     /**
      * Run the mvc (or micro) application and return the response.
-     * 
-     * @return Phalcon\Mvc\ResponseInterface|bool
+     *
+     * @return Phalcon\Http\ResponseInterface|bool
      */
     public function run(?int $context);
 }

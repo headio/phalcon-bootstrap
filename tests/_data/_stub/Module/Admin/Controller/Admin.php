@@ -33,7 +33,7 @@ class Admin
 
     /**
      * Contact action
-     * 
+     *
      * @Route("/contact", methods={"GET"}, name="adminContact")
      */
     public function contactAction()

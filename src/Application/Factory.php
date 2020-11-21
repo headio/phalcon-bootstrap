@@ -13,13 +13,14 @@ namespace Headio\Phalcon\Bootstrap\Application;
 
 use Headio\Phalcon\Bootstrap\Exception\OutOfBoundsException;
 use Phalcon\Cli\Console;
-use Phalcon\Mvc\{ Application, Micro };
+use Phalcon\Mvc\Application;
+use Phalcon\Mvc\Micro;
 use Phalcon\DiInterface;
 
 /**
- * A simple application factory, encapsulating module registration, 
- * handler registration (micro), event management and middleware logic 
- * assignment for full-stack mvc applications, micro services and 
+ * A simple application factory, encapsulating module registration,
+ * handler registration (micro), event management and middleware logic
+ * assignment for full-stack mvc applications, micro services and
  * console applications.
  */
 class Factory implements FactoryInterface
@@ -86,7 +87,7 @@ class Factory implements FactoryInterface
             throw new OutOfBoundsException('Could not load application handlers');
         }
 
-        require($handlers);
+        require $handlers;
 
         $eventManager = $di->get('eventsManager');
 

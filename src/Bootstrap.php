@@ -11,7 +11,8 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap;
 
-use Headio\Phalcon\Bootstrap\Application\{ Factory, FactoryInterface };
+use Headio\Phalcon\Bootstrap\Application\Factory;
+use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
 use Phalcon\DiInterface;
 use Phalcon\Http\ResponseInterface;
 
@@ -37,7 +38,7 @@ class Bootstrap implements BootstrapInterface
 
     /**
      * Run the application
-     * 
+     *
      * @return ResponseInterface|bool
      */
     public function run(?int $context = null)

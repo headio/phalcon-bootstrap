@@ -29,7 +29,7 @@ class VoltExtension extends Injectable
             case 'i18n':
                 return '$this->i18n->query(' . $args . ')';
                 break;
-            case 'intlDateFormatter': 
+            case 'intlDateFormatter':
                 return '$dateFormatter(' . $args . ')';
             default:
                 return;

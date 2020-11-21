@@ -24,7 +24,7 @@ class ConsoleOutput implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'consoleOutput', 
+            'consoleOutput',
             function () {
                 return new Service(Output::VERBOSITY_NORMAL, true);
             }

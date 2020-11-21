@@ -110,30 +110,30 @@ class FactoryTest extends UnitTest
                 );
 
                 $this->should(
-                    'have registered security service dependency', 
-                    function ()  use ($result) {
+                    'have registered security service dependency',
+                    function () use ($result) {
                         expect($result->has('security'))->equals(true);
                     }
                 );
 
                 $this->should(
-                    'return instance of annotations apcu adapter in live modus', 
-                    function ()  use ($result) {
+                    'return instance of annotations apcu adapter in live modus',
+                    function () use ($result) {
                         expect($result->get('annotations'))->isInstanceOf(Apcu::class);
                     }
                 );
 
                 $this->should(
-                    'return instance of annotations memory adapter in debug modus', 
+                    'return instance of annotations memory adapter in debug modus',
                     function () {
                         $config = (new Config($this->_config()))
                             ->merge(
-                                new Config([
+                                new Config(
+                                    [
                                         'debug' => true
                                     ]
                                 )
-                            )
-                        ;
+                            );
                         $mock = Mockery::mock(Factory::class, [$config])->makePartial();
                         $result = $mock->create(new Di);
 
@@ -191,4 +191,3 @@ class FactoryTest extends UnitTest
         ];
     }
 }
-

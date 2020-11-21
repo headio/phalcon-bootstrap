@@ -9,9 +9,9 @@
  */
 namespace Stub\Config;
 
-use Stub\Module\Admin\Controller\{ Index, User };
+use Stub\Module\Admin\Controller\Index;
+use Stub\Module\Admin\Controller\User;
 use Phalcon\Mvc\Micro\Collection;
-
 
 $handler = new Collection();
 $handler->setHandler(User::class, true);
@@ -25,4 +25,3 @@ $handler->setHandler(Index::class, true);
 $handler->setPrefix('/');
 $handler->get('/', 'indexAction', 'apiIndex');
 $app->mount($handler);
-

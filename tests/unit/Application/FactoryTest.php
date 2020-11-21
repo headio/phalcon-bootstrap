@@ -90,15 +90,14 @@ class FactoryTest extends UnitTest
             function () {
                 $config = new Config($this->_config());
                 $config->merge(
-                        new Config(
+                    new Config(
                             [
-                                'handlerPath' => TEST_STUB_DIR . 'Config' . 
-                                    DIRECTORY_SEPARATOR . 
+                                'handlerPath' => TEST_STUB_DIR . 'Config' .
+                                    DIRECTORY_SEPARATOR .
                                     'Handlers.php'
                             ]
                         )
-                    )
-                ;
+                );
                 $di = (new DiFactory($config))->createDefaultMvc();
                 $mock = Mockery::mock(
                     Factory::class,
@@ -173,19 +172,18 @@ class FactoryTest extends UnitTest
     public function testFactoryCanRegisterEventListenersForMvcApplication() : void
     {
         $this->specify(
-            'Event Manager has exact number of registered listeners', 
+            'Event Manager has exact number of registered listeners',
             function () {
                 $config = new Config($this->_config());
                 $config->merge(
-                        new Config(
+                    new Config(
                             [
                                 'middleware' => [
                                     'Stub\\Middleware\\Foo'
                                 ]
                             ]
                         )
-                    )
-                ;
+                );
                 $di = (new DiFactory($config))->createDefaultMvc();
                 $mock = Mockery::mock(
                     Factory::class,
@@ -209,14 +207,14 @@ class FactoryTest extends UnitTest
     public function testFactoryCanRegisterEventListenersForMicroApplication() : void
     {
         $this->specify(
-            'Event Manager has exact number of registered listeners', 
+            'Event Manager has exact number of registered listeners',
             function () {
                 $config = new Config($this->_config());
                 $config->merge(
                     new Config(
                         [
-                            'handlerPath' => TEST_STUB_DIR . 'Config' . 
-                                DIRECTORY_SEPARATOR . 
+                            'handlerPath' => TEST_STUB_DIR . 'Config' .
+                                DIRECTORY_SEPARATOR .
                                 'Handlers.php',
                             'middleware' => [
                                 NotFoundMiddleware::class => 'before'
@@ -283,13 +281,13 @@ class FactoryTest extends UnitTest
     {
         $this->specify(
             'Event Manager receives assigned middleware',
-            function ()  {
+            function () {
                 $config = new Config($this->_config());
                 $config->merge(
                     new Config(
                         [
-                            'handlerPath' => TEST_STUB_DIR . 'Config' . 
-                                DIRECTORY_SEPARATOR . 
+                            'handlerPath' => TEST_STUB_DIR . 'Config' .
+                                DIRECTORY_SEPARATOR .
                                 'Handlers.php',
                             'middleware' => [
                                 NotFoundMiddleware::class => 'before'

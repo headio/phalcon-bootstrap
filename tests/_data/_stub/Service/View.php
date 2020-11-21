@@ -29,7 +29,7 @@ class View implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'view', 
+            'view',
             function () {
                 $config = $this->get('config');
                 $service = new Service();

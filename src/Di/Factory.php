@@ -17,7 +17,7 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\FactoryDefault\Cli;
 
 /**
- * A simple factory providing dependency injection container instantiation, 
+ * A simple factory providing dependency injection container instantiation,
  * encapsulating the registration of service dependency definitions for
  * mvc, micro and cli applications.
  */

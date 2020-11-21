@@ -15,10 +15,10 @@ use Headio\Phalcon\Bootstrap\Application\Factory as AppFactory;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
 use Phalcon\Config;
 
-require_once dirname(__DIR__, 2)  . '/vendor/autoload.php';
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 $config = [
-    'applicationPath' => dirname(__DIR__) . 
+    'applicationPath' => dirname(__DIR__) .
         DIRECTORY_SEPARATOR . '_data' .
         DIRECTORY_SEPARATOR . '_stub' .
         DIRECTORY_SEPARATOR,

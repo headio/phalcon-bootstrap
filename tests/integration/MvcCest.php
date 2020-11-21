@@ -90,7 +90,7 @@ class MvcCest
     /**
      * Return test config
      */
-    protected function _config() : array
+    private function _config() : array
     {
         return [
             'annotations' => [

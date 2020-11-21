@@ -20,7 +20,7 @@ class Index extends Controller
     {
         $response = new Response();
         $response->setStatusCode(200, 'OK');
-        $response->setContent("Hello world");
+        $response->setContent('Hello world');
 
         return $response;
     }

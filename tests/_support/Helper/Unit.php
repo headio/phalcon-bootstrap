@@ -16,7 +16,7 @@ use Headio\Phalcon\Bootstrap\Cli\Console\ConsoleTester;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
 use Phalcon\Config;
 use Phalcon\Cli\Console;
-use Symfony\Component\Console\Output\StreamOutput; 
+use Symfony\Component\Console\Output\StreamOutput;
 
 class Unit extends \Codeception\Module
 {

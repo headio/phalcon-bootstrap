@@ -27,7 +27,7 @@ class Router implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'router', 
+            'router',
             function () {
                 $config = $this->get('config');
 

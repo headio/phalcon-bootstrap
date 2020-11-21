@@ -25,7 +25,7 @@ class Dispatcher implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'dispatcher', 
+            'dispatcher',
             function () {
                 $config = $this->get('config');
                 $eventsManager = $this->get('eventsManager');

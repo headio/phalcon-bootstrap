@@ -23,7 +23,7 @@ class Annotation implements ServiceProviderInterface
     public function register(DiInterface $di) : void
     {
         $di->setShared(
-            'annotations', 
+            'annotations',
             function () {
                 $config = $this->getConfig();
 
