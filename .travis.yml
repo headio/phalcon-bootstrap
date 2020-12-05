@@ -19,6 +19,13 @@ cache:
     - $HOME/.composer/cache
     - $HOME/assets
 
+before_install:
+  - |
+    # php.ini configuration
+    if [ "$TRAVIS_PHP_VERSION" = "7.4" ]; then
+      find ~/.phpenv -name xdebug.ini -delete
+    fi
+
 install:
   - pecl install --force psr
   - .ci/install-phalcon.sh
