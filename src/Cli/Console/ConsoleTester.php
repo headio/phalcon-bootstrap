@@ -23,15 +23,12 @@ use Closure;
 
 class ConsoleTester
 {
-    /**
-     * @var Console
-     */
-    private $console;
+    private Console $console;
 
     /**
      * @var TaskInterface
      */
-    private $task;
+    private TaskInterface $task;
 
     /**
      * @var \Resource

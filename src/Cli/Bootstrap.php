@@ -17,8 +17,7 @@ use Phalcon\Di\DiInterface;
 
 class Bootstrap implements BootstrapInterface
 {
-    /** @var FactoryInterface */
-    private $factory;
+    private FactoryInterface $factory;
 
     public function __construct(FactoryInterface $factory)
     {

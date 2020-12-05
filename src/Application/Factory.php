@@ -25,8 +25,7 @@ use Phalcon\Di\DiInterface;
  */
 class Factory implements FactoryInterface
 {
-    /** @var DiInterface */
-    private $di;
+    private DiInterface $di;
 
     public function __construct(DiInterface $di)
     {

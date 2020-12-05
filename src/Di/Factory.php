@@ -23,8 +23,7 @@ use Phalcon\Di\FactoryDefault\Cli;
  */
 class Factory implements FactoryInterface
 {
-    /** @var Config */
-    private $config;
+    private Config $config;
 
     public function __construct(Config $config)
     {
@@ -67,7 +66,7 @@ class Factory implements FactoryInterface
         $di->setShared('config', $config);
 
         /**
-         * Register di container service definitions
+         * Register the service definitions
          */
         if (isset($config->services)) {
             foreach ($config->services->toArray() ?? [] as $service) {
