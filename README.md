@@ -1,6 +1,6 @@
 # Phalcon application bootstrap
 
-A flexible application bootstrap for Phalcon-based projects  
+A flexible application bootstrap for Phalcon4-based projects  
 
 [![Build Status](https://travis-ci.com/headio/phalcon-bootstrap.svg?branch=master)](https://travis-ci.com/headio/phalcon-bootstrap) [![Coverage Status](https://coveralls.io/repos/github/headio/phalcon-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/headio/phalcon-bootstrap?branch=master)
 
@@ -12,7 +12,7 @@ A simple factory instantiates the DI container, encapsulating the registration o
 ## Dependencies
 
 * PHP >=7.4 <8.0
-* Phalcon >=4.0
+* Phalcon >=4.1.0
 * Symfony console >=5.0
 
 See composer.json for more details  
