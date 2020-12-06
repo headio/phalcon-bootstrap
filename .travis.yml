@@ -42,6 +42,7 @@ install:
 
 before_script:
   - phpenv config-rm xdebug.ini
+  - pecl install pcov
 
 script:
   - vendor/bin/codecept clean
