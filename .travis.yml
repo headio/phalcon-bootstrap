@@ -3,6 +3,10 @@ language: php
 php:
     - 7.4
 
+os: linux
+
+dist: bionic
+
 env:
   global:
     - PHALCON_VERSION="v4.1.0"
@@ -19,17 +23,25 @@ cache:
     - $HOME/.composer/cache
     - $HOME/assets
 
+services:
+  - memcached
+
 before_install:
-  - |
-    # php.ini configuration
-    if [ "$TRAVIS_PHP_VERSION" = "7.4" ]; then
-      find ~/.phpenv -name xdebug.ini -delete
-    fi
+  # php ini settings
+  - php -i
+  - export INI=~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - echo memory_limit = -1 >> $INI
+  - echo opcache.enable_cli = 1 >> $INI
+  # suppress git advisories
+  - git config --global advice.detachedHead false
 
 install:
   - pecl install --force psr
   - .ci/install-phalcon.sh
   - travis_retry composer update --no-interaction --no-progress --no-ansi --no-suggest
+
+before_script:
+  - phpenv config-rm xdebug.ini
 
 script:
   - vendor/bin/codecept clean
@@ -44,7 +56,7 @@ jobs:
       script:
         - make coverage
       after_script:
-        - composer global require php-coveralls/php-coveralls ^2.2
+        - composer global require php-coveralls/php-coveralls ^2.4
         - ~/.composer/vendor/bin/php-coveralls --verbose --config tests/.coveralls.yml
 
 notifications:
