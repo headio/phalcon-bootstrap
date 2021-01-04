@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -25,7 +23,7 @@ use Stub\Middleware\NotFoundMiddleware;
 
 class FactoryTest extends UnitTest
 {
-    public function testFactoryCanCreateMvcApplication() : void
+    public function testFactoryCanCreateMvcApplication(): void
     {
         $this->describe(
             'Factory can create mvc application',
@@ -59,7 +57,7 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanNotCreateMicroApplication() : void
+    public function testFactoryCanNotCreateMicroApplication(): void
     {
         $this->expectException(OutOfBoundsException::class);
 
@@ -83,7 +81,7 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanCreateMicroApplication() : void
+    public function testFactoryCanCreateMicroApplication(): void
     {
         $this->describe(
             'Factory can create micro application',
@@ -91,12 +89,12 @@ class FactoryTest extends UnitTest
                 $config = new Config($this->_config());
                 $config->merge(
                     new Config(
-                            [
-                                'handlerPath' => TEST_STUB_DIR . 'Config' .
-                                    DIRECTORY_SEPARATOR .
-                                    'Handlers.php'
-                            ]
-                        )
+                        [
+                            'handlerPath' => TEST_STUB_DIR . 'Config' .
+                                DIRECTORY_SEPARATOR .
+                                'Handlers.php'
+                        ]
+                    )
                 );
                 $di = (new DiFactory($config))->createDefaultMvc();
                 $mock = Mockery::mock(
@@ -126,7 +124,7 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanRegisterModulesForMvcApplication() : void
+    public function testFactoryCanRegisterModulesForMvcApplication(): void
     {
         $this->specify(
             'Factory can assign modules to mvc application',
@@ -169,7 +167,7 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanRegisterEventListenersForMvcApplication() : void
+    public function testFactoryCanRegisterEventListenersForMvcApplication(): void
     {
         $this->specify(
             'Event Manager has exact number of registered listeners',
@@ -177,12 +175,12 @@ class FactoryTest extends UnitTest
                 $config = new Config($this->_config());
                 $config->merge(
                     new Config(
-                            [
-                                'middleware' => [
-                                    'Stub\\Middleware\\Foo'
-                                ]
+                        [
+                            'middleware' => [
+                                'Stub\\Middleware\\Foo'
                             ]
-                        )
+                        ]
+                    )
                 );
                 $di = (new DiFactory($config))->createDefaultMvc();
                 $mock = Mockery::mock(
@@ -204,7 +202,7 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanRegisterEventListenersForMicroApplication() : void
+    public function testFactoryCanRegisterEventListenersForMicroApplication(): void
     {
         $this->specify(
             'Event Manager has exact number of registered listeners',
@@ -243,7 +241,7 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanAttachMiddlewareToMvcApplication() : void
+    public function testFactoryCanAttachMiddlewareToMvcApplication(): void
     {
         $this->specify(
             'Event Manager receives assigned middleware',
@@ -277,7 +275,7 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanAttachMiddlewareToMicroApplication() : void
+    public function testFactoryCanAttachMiddlewareToMicroApplication(): void
     {
         $this->specify(
             'Event Manager receives assigned middleware',
@@ -317,7 +315,7 @@ class FactoryTest extends UnitTest
     /**
      * Return test config
      */
-    protected function _config() : array
+    protected function _config(): array
     {
         return [
             'middleware' => [],

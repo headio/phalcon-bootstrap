@@ -11,8 +11,8 @@ A simple factory instantiates the DI container, encapsulating the registration o
 
 ## Dependencies
 
-* PHP7.2+
-* Phalcon3.4+ < 4.0
+* PHP 7.2+
+* Phalcon 3.4+ < 4.0
 * Symfony console
 
 See composer.json for more details  
@@ -502,13 +502,11 @@ Then create the respective service provider and modify its behaviour:
 
 ```php
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -598,13 +596,11 @@ The bootstrap factory will automatically instantiate a Phalcon application and r
 
 ```php
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 

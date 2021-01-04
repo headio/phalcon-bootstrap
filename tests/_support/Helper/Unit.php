@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -23,7 +21,7 @@ class Unit extends \Codeception\Module
     /**
      * Return a bootstrapped console application
      */
-    public function bootConsole(array $global) : Console
+    public function bootConsole(array $global): Console
     {
         /** @var Config */
         $config = new Config($global);
@@ -40,7 +38,7 @@ class Unit extends \Codeception\Module
     /**
      * Return an instance of the console tester
      */
-    public function getConsoleTester(Console $console) : ConsoleTester
+    public function getConsoleTester(Console $console): ConsoleTester
     {
         $ct = new ConsoleTester($console);
         $ct->setStream(

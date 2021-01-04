@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -69,7 +67,7 @@ class ConsoleFactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanRegisterModules() : void
+    public function testFactoryCanRegisterModules(): void
     {
         $this->specify(
             'Factory can assign modules to console application',
@@ -88,7 +86,7 @@ class ConsoleFactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanRegisterEventListeners() : void
+    public function testFactoryCanRegisterEventListeners(): void
     {
         $this->specify(
             'Event Manager has correct number of registered listeners',
@@ -105,7 +103,7 @@ class ConsoleFactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanAttachMiddleware() : void
+    public function testFactoryCanAttachMiddleware(): void
     {
         $this->specify(
             'Event Manager receives assigned middleware',
@@ -121,7 +119,7 @@ class ConsoleFactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanSetDiHasConsoleDependency() : void
+    public function testFactoryCanSetDiHasConsoleDependency(): void
     {
         $this->specify(
             'Factory can create console service dependency',
@@ -140,7 +138,7 @@ class ConsoleFactoryTest extends UnitTest
     /**
      * Return test config
      */
-    protected function _config() : array
+    protected function _config(): array
     {
         return [
             'dispatcher' => [

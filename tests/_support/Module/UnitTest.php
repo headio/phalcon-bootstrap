@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -54,7 +52,7 @@ class UnitTest extends Unit
     /**
      * Get inaccessible class property
      */
-    protected function getClassProperty(string $class, string $name) : ?ReflectionProperty
+    protected function getClassProperty(string $class, string $name): ?ReflectionProperty
     {
         $rc = new ReflectionClass($class);
 
@@ -77,7 +75,7 @@ class UnitTest extends Unit
      * @param object
      * @param string
      */
-    protected function getClassMethod($class, string $method) : ?ReflectionMethod
+    protected function getClassMethod($class, string $method): ?ReflectionMethod
     {
         $rc = new ReflectionClass($class);
 

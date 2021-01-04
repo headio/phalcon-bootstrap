@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -47,7 +45,7 @@ class Base extends Task
     /**
      * Render table layout view for a query resultset.
      */
-    protected function displayTable(ResultsetInterface $resultset) : int
+    protected function displayTable(ResultsetInterface $resultset): int
     {
         if ($resultset->count() <> 0) {
             $resultset->rewind();
@@ -64,7 +62,7 @@ class Base extends Task
     /**
      * Render view for model data.
      */
-    protected function displayView(array $columns, array $data) : int
+    protected function displayView(array $columns, array $data): int
     {
         $this->table->setHeaders($columns);
         $this->table->addRow($data)->render();
@@ -75,7 +73,7 @@ class Base extends Task
     /**
      * Handle exception
      */
-    protected function handleException(Throwable $e) : string
+    protected function handleException(Throwable $e): string
     {
         $exceptionMessage = $e->getMessage();
         /**
@@ -103,7 +101,7 @@ class Base extends Task
     /**
      * Return an array representation of the model validation errors.
      */
-    private function getValidationErrors(ModelInterface $model) : array
+    private function getValidationErrors(ModelInterface $model): array
     {
         $errors = [];
 

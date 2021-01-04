@@ -5,6 +5,8 @@ composer.lock
 *-lock.json
 *.env
 *.bak
+*.cache
+.php_cs
 
 # editors
 .vscode/*
