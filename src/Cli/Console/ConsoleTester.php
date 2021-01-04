@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -45,7 +43,7 @@ class ConsoleTester
      *
      * @throws MissingDependencyException
      */
-    public function setStream(Closure $closure) : self
+    public function setStream(Closure $closure): self
     {
         /** @var DiInterface */
         $di = $this->console->getDI();
@@ -62,7 +60,7 @@ class ConsoleTester
     /**
      * Execute the console command and capture the output stream.
      */
-    public function execute(array $server) : void
+    public function execute(array $server): void
     {
         /** @var DiInterface */
         $di = $this->console->getDI();
@@ -76,7 +74,7 @@ class ConsoleTester
     /**
      * Return the console application instance
      */
-    public function getApplication() : Console
+    public function getApplication(): Console
     {
         return $this->console;
     }
@@ -84,7 +82,7 @@ class ConsoleTester
     /**
      * Return the current task instance
      */
-    public function getTask() : TaskInterface
+    public function getTask(): TaskInterface
     {
         return $this->task;
     }
@@ -100,7 +98,7 @@ class ConsoleTester
     /**
      * Return the stream output from the stream handler.
      */
-    public function getOutput() : string
+    public function getOutput(): string
     {
         rewind($this->stream);
         $output = stream_get_contents($this->stream);

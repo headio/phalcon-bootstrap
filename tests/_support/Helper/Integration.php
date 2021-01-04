@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -18,7 +16,7 @@ use Headio\Phalcon\Bootstrap\Cli\Console\ConsoleTester;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
 use Phalcon\Config;
 use Phalcon\Cli\Console;
-use Symfony\Component\Console\Output\StreamOutput; 
+use Symfony\Component\Console\Output\StreamOutput;
 use Codeception\Util\Debug;
 
 class Integration extends \Codeception\Module
@@ -26,7 +24,7 @@ class Integration extends \Codeception\Module
     /**
      * Return a bootstrapped console application
      */
-    public function bootConsole(array $global) : Console
+    public function bootConsole(array $global): Console
     {
         /** @var Config */
         $config = new Config($global);
@@ -44,7 +42,7 @@ class Integration extends \Codeception\Module
      * Return an application factory instance with a fully configured
      * mvc dependency injection container.
      */
-    public function bootMvc(array $global) : BootstrapInterface
+    public function bootMvc(array $global): BootstrapInterface
     {
         /** @var Config */
         $config = new Config($global);
@@ -69,7 +67,7 @@ class Integration extends \Codeception\Module
     /**
      * Return an instance of the console tester
      */
-    public function getConsoleTester(Console $console) : ConsoleTester
+    public function getConsoleTester(Console $console): ConsoleTester
     {
         $ct = new ConsoleTester($console);
         $ct->setStream(
@@ -102,12 +100,12 @@ class Integration extends \Codeception\Module
     /**
      * Validate the response payload
      */
-    public function seeResponseEquals(string $content) : bool
+    public function seeResponseEquals(string $content): bool
     {
-       $this->assertEquals(
-           $content, 
-           $this->getModule('Phalcon')->_getResponseContent(),
-           "response payload"
+        $this->assertEquals(
+            $content,
+            $this->getModule('Phalcon')->_getResponseContent(),
+            "response payload"
         );
     }
 }

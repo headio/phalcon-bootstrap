@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -22,12 +20,12 @@ use Module\UnitTest;
 
 class BootstrapTest extends UnitTest
 {
-    protected function _after() : void
+    protected function _after(): void
     {
         Di::reset();
     }
 
-    public function testCanCallFactoryMethod() : void
+    public function testCanCallFactoryMethod(): void
     {
         $this->specify(
             'Factory method creates expected bootstrap instance',
@@ -53,7 +51,7 @@ class BootstrapTest extends UnitTest
         );
     }
 
-    public function testConsoleEventListenerCallsMiddleware() : void
+    public function testConsoleEventListenerCallsMiddleware(): void
     {
         $this->specify(
             'Event Manager calls attached console middleware',
@@ -81,7 +79,7 @@ class BootstrapTest extends UnitTest
     /**
      * Return test config
      */
-    protected function _config() : array
+    protected function _config(): array
     {
         return [
             'debug' => false,

@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -330,7 +328,7 @@ class Inflector
     /**
      * Return a camelized syntax string.
      */
-    public static function camelize(string $str) : string
+    public static function camelize(string $str): string
     {
         return str_replace(' ', '', ucwords(str_replace(['_', '-'], ' ', $str)));
     }
@@ -338,7 +336,7 @@ class Inflector
     /**
      * Return a dashed-syntax string.
      */
-    public static function dashize(string $str) : string
+    public static function dashize(string $str): string
     {
         return preg_replace('/(?<=\\w)([A-Z])/', '-\\1', $str);
     }
@@ -346,7 +344,7 @@ class Inflector
     /**
      *  Convert special HTML entities back to their respective characters.
      */
-    public static function decode(string $content, int $flags = \ENT_QUOTES) : string
+    public static function decode(string $content, int $flags = \ENT_QUOTES): string
     {
         return htmlspecialchars_decode($content, $flags);
     }
@@ -355,7 +353,7 @@ class Inflector
      * Return a decoded uri segment, which has been percent-encoded
      * according to RFC 3986, section 2.2.
      */
-    public static function decodeUriSegment(string $str) : string
+    public static function decodeUriSegment(string $str): string
     {
         $str = (string) rawurldecode($str);
         return str_replace(static::$uri_reserved_chars_encoded, static::$uri_reserved_chars, $str);
@@ -364,7 +362,7 @@ class Inflector
     /**
      * Return a dotized-syntax string.
      */
-    public static function dotize(string $str) : string
+    public static function dotize(string $str): string
     {
         return strtolower(preg_replace('/(?<=\\w)([A-Z])/', '.\\1', $str));
     }
@@ -373,7 +371,7 @@ class Inflector
      * Return a percent-encoded url segment according
      * to RFC 3986, section 2.2.
      */
-    public static function encodeUriSegment(string $str) : string
+    public static function encodeUriSegment(string $str): string
     {
         $str = (string) rawurlencode(strtolower($str));
         return str_replace(static::$uri_reserved_chars, static::$uri_reserved_chars_encoded, $str);
@@ -382,7 +380,7 @@ class Inflector
     /**
      * Convert special characters into html entities.
      */
-    public static function escape(string $str, int $flag = \ENT_QUOTES, string $e = 'utf-8', bool $double_encode = false) : string
+    public static function escape(string $str, int $flag = \ENT_QUOTES, string $e = 'utf-8', bool $double_encode = false): string
     {
         return htmlspecialchars($str, $flag, $e, $double_encode);
     }
@@ -390,7 +388,7 @@ class Inflector
     /**
      * Generate a humanized syntax string.
      */
-    public static function humanize(string $str, bool $ucAll = false) : string
+    public static function humanize(string $str, bool $ucAll = false): string
     {
         $str = trim(str_replace(['_id', '-', '_', '.'], ' ', preg_replace('/(?<![A-Z])[A-Z]/', ' \0', $str)));
         return $ucAll ? ucwords($str) : ucfirst($str);
@@ -399,7 +397,7 @@ class Inflector
     /**
      * Return a multibyte-aware lcfirst string.
      */
-    public static function lcfirst(string $str, string $e = 'utf-8') : string
+    public static function lcfirst(string $str, string $e = 'utf-8'): string
     {
         $mbAware = mb_strtolower(mb_substr($str, 0, 1, $e), $e);
         return $mbAware . mb_substr($str, 1, mb_strlen($str, $e), $e);
@@ -408,7 +406,7 @@ class Inflector
     /**
      * Return a number to its ordinal english form.
      */
-    public static function ordinalize(int $number) : string
+    public static function ordinalize(int $number): string
     {
         if (in_array(($number % 100), range(11, 13))) {
             return $number . 'th';
@@ -430,7 +428,7 @@ class Inflector
      * Normalize preferred language string format anomalies
      * returned by the browser/client request.
      */
-    public static function normalizeAcceptLanguage(string $locale) : string
+    public static function normalizeAcceptLanguage(string $locale): string
     {
         $keywords = preg_split('/[-_]+/', $locale, 2, \PREG_SPLIT_NO_EMPTY);
         reset($keywords);
@@ -441,7 +439,7 @@ class Inflector
     /**
      * Normalize locale to ISO 639-1 (alpha-2 format).
      */
-    public static function normalizeLocale(string $locale) : string
+    public static function normalizeLocale(string $locale): string
     {
         $keywords = preg_split('/[-_]+/', $locale, 2, \PREG_SPLIT_NO_EMPTY);
         reset($keywords);
@@ -452,7 +450,7 @@ class Inflector
     /**
      * Convert an english language word to its plural form.
      */
-    public static function pluralize(string $str) : string
+    public static function pluralize(string $str): string
     {
         if (isset(static::$specials[$str])) {
             return static::$specials[$str];
@@ -471,7 +469,7 @@ class Inflector
      * Replace special diacritic characters to their
      * corresponding replacements defined in map $transliteration_map.
      */
-    public static function replaceDiacritics(string $str) : string
+    public static function replaceDiacritics(string $str): string
     {
         return str_replace(
             array_keys(static::$transliteration_map),
@@ -483,7 +481,7 @@ class Inflector
     /**
      * Replace non breaking spaces.
      */
-    public static function replaceNBSP(string $str) : string
+    public static function replaceNBSP(string $str): string
     {
         return str_replace(utf8_encode(html_entity_decode('&#160;')), ' ', $str);
     }
@@ -491,7 +489,7 @@ class Inflector
     /**
      * Sanitize a string
      */
-    public static function sanitize(string $str, string $replacement = '_', string $transliterator = null) : string
+    public static function sanitize(string $str, string $replacement = '_', string $transliterator = null): string
     {
         $str = static::replaceDiacritics($str);
         $str = static::transliterate($str, $transliterator);
@@ -503,7 +501,7 @@ class Inflector
     /**
      * Convert an english plural to singular.
      */
-    public static function singularize(string $str) : string
+    public static function singularize(string $str): string
     {
         $result = array_search($str, static::$specials, true);
 
@@ -525,7 +523,7 @@ class Inflector
      * All non-word characters are removed and the rest of characters
      * transliterated based on the given $transliterator.
      */
-    public static function slugify(string $str, string $replacement = '-', string $transliterator = null) : string
+    public static function slugify(string $str, string $replacement = '-', string $transliterator = null): string
     {
         $str = static::replaceDiacritics($str);
         $str = static::transliterate($str, $transliterator);
@@ -541,7 +539,7 @@ class Inflector
      * @author Antonio Ramirez <amigo.cobos@gmail.com>
      * @author Alexander Makarov <sam@rmcreative.ru>
      */
-    public static function transliterate(string $str, string $transliterator = null) : string
+    public static function transliterate(string $str, string $transliterator = null): string
     {
         if (null === $transliterator) {
             $transliterator = static::$transliterator;
@@ -553,7 +551,7 @@ class Inflector
     /**
      * Return a multibyte-aware ucfirst string.
      */
-    public static function ucfirst(string $str, string $e = 'utf-8') : string
+    public static function ucfirst(string $str, string $e = 'utf-8'): string
     {
         $mbAware = mb_strtoupper(mb_substr($str, 0, 1, $e), $e);
         return $mbAware . mb_substr($str, 1, mb_strlen($str, $e), $e);
@@ -562,7 +560,7 @@ class Inflector
     /**
      * Return an underscore-syntax string.
      */
-    public static function underscore(string $str) : string
+    public static function underscore(string $str): string
     {
         return strtolower(preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z])([A-Z\d])/'], ['\\1_\\2', '\\1_\\2'], $str));
     }
@@ -570,7 +568,7 @@ class Inflector
     /**
      * Similiar to `humanize`, but return the first letter in lowercase.
      */
-    public static function variablize(string $str) : string
+    public static function variablize(string $str): string
     {
         $str = static::camelize($str);
         return strtolower($str[0]) . substr($str, 1);

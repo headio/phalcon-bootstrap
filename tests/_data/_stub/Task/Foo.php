@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -23,7 +21,7 @@ class Foo extends BaseTask
         return 0;
     }
 
-    public function anotherAction() : int
+    public function anotherAction(): int
     {
         $this->output->writeln('<info>Another action</info>');
 
@@ -49,7 +47,7 @@ class Foo extends BaseTask
         return 0;
     }
 
-    public function listAction() : int
+    public function listAction(): int
     {
         $columns = ['id', 'label'];
         $this->table->setHeaders($columns);
@@ -62,7 +60,7 @@ class Foo extends BaseTask
         return 0;
     }
 
-    public function createAction() : int
+    public function createAction(): int
     {
         if (!(isset($this->dispatcher->getOptions()['label']))) {
             throw new BadMethodCallException('Missing value for option --label');
@@ -72,7 +70,7 @@ class Foo extends BaseTask
         return 0;
     }
 
-    public function searchAction() : int
+    public function searchAction(): int
     {
         $columns = ['id', 'label'];
 
@@ -87,14 +85,14 @@ class Foo extends BaseTask
         }
     }
 
-    public function helpAction() : int
+    public function helpAction(): int
     {
         $this->output->writeln('<info>' . $this->getHelp() . '</info>');
 
         return 0;
     }
 
-    private function getHelp() : string
+    private function getHelp(): string
     {
         return <<<EOT
 =========================================================================

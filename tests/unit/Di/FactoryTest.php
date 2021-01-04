@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -41,16 +39,16 @@ class FactoryTest extends UnitTest
         )
         ->makePartial();
 
-        $this->mock->allows()->createDefaultMvc()->andReturn(new FactoryDefault);
-        $this->mock->allows()->createDefaultCli()->andReturn(new Cli);
-        $this->mock->allows()->create()->with(new Di)->andReturn(new Di);
+        $this->mock->allows()->createDefaultMvc()->andReturn(new FactoryDefault());
+        $this->mock->allows()->createDefaultCli()->andReturn(new Cli());
+        $this->mock->allows()->create()->with(new Di())->andReturn(new Di());
     }
 
     protected function _after()
     {
     }
 
-    public function testFactoryCanCreateDiForCliContext() : void
+    public function testFactoryCanCreateDiForCliContext(): void
     {
         $this->specify(
             'Factory creates a dependency injection container for the cli',
@@ -60,7 +58,7 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanCreateDiForMvcContext() : void
+    public function testFactoryCanCreateDiForMvcContext(): void
     {
         $this->specify(
             'Factory creates dependency injection container for an MVC context',
@@ -70,22 +68,22 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryCanCreateDiForNamedContext() : void
+    public function testFactoryCanCreateDiForNamedContext(): void
     {
         $this->specify(
             'Factory creates dependency injection container for named context',
             function () {
-                expect($this->mock->create(new Di))->isInstanceOf(DiInterface::class);
+                expect($this->mock->create(new Di()))->isInstanceOf(DiInterface::class);
             }
         );
     }
 
-    public function testFactoryCanConfigureDiContainer() : void
+    public function testFactoryCanConfigureDiContainer(): void
     {
         $this->describe(
             'Factory can configure a dependency injection container',
             function () {
-                $result = $this->mock->create(new Di);
+                $result = $this->mock->create(new Di());
 
                 $this->should(
                     'have registered config as a service dependency',
@@ -135,7 +133,7 @@ class FactoryTest extends UnitTest
                                 )
                             );
                         $mock = Mockery::mock(Factory::class, [$config])->makePartial();
-                        $result = $mock->create(new Di);
+                        $result = $mock->create(new Di());
 
                         expect($result->get('annotations'))->isInstanceOf(Memory::class);
                     }
@@ -144,12 +142,12 @@ class FactoryTest extends UnitTest
         );
     }
 
-    public function testFactoryIsCliAware() : void
+    public function testFactoryIsCliAware(): void
     {
         $this->specify(
             'Factory assigns cli config during cli dependency injection container instantiation',
             function () {
-                $result = $this->mock->create(new Cli)->getConfig()['cli'];
+                $result = $this->mock->create(new Cli())->getConfig()['cli'];
 
                 expect($result)->true();
             }
@@ -159,7 +157,7 @@ class FactoryTest extends UnitTest
     /**
      * Return test config
      */
-    protected function _config() : array
+    protected function _config(): array
     {
         return [
             'annotations' => [

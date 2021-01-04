@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -20,7 +18,7 @@ class NotFoundMiddleware extends Injectable implements MiddlewareInterface
     /**
      * Route was not found
      */
-    public function beforeNotFound() : bool
+    public function beforeNotFound(): bool
     {
         $response = $this->application->getService('response');
         $response

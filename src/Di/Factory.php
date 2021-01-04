@@ -1,11 +1,9 @@
 <?php
-/*
+/**
  * This source file is subject to the MIT License.
  *
- * (c) Dominic Beck <dominic@headcrumbs.io>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this package.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this package.
  */
 declare(strict_types=1);
 
@@ -43,7 +41,7 @@ class Factory implements FactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createDefaultCli() : DiInterface
+    public function createDefaultCli(): DiInterface
     {
         $di = new Cli();
 
@@ -53,7 +51,7 @@ class Factory implements FactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function create(DiInterface $di) : DiInterface
+    public function create(DiInterface $di): DiInterface
     {
         /** @var Config */
         $config = $this->config;
