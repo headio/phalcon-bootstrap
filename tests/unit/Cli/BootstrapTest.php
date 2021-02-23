@@ -91,11 +91,11 @@ class BootstrapTest extends UnitTest
                 'Stub\\Middleware\\Foo'
             ],
             'services' => [
-                'Stub\Service\EventManager', // load first
-                'Stub\Service\Logger',
-                'Stub\Service\Dispatcher',
-                'Stub\Service\Router',
-                'Stub\Service\ConsoleOutput',
+                'Stub\Provider\EventManager', // load first
+                'Stub\Provider\Logger',
+                'Stub\Provider\Dispatcher',
+                'Stub\Provider\Router',
+                'Stub\Provider\ConsoleOutput',
             ],
             'timezone' => 'Europe/London'
         ];

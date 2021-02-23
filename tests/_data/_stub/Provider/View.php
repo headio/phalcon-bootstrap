@@ -7,9 +7,8 @@
  */
 declare(strict_types=1);
 
-namespace Stub\Service;
+namespace Stub\Provider;
 
-use Phalcon\Config;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\EventInterface;

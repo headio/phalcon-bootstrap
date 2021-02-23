@@ -109,7 +109,7 @@ class MicroCest
                 NotFoundMiddleware::class => 'before'
             ],
             'services' => [
-                'Stub\Service\EventManager'
+                'Stub\Provider\EventManager'
             ],
             'timezone' => 'Europe/London'
         ];

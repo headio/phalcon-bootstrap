@@ -7,13 +7,14 @@
  */
 declare(strict_types=1);
 
-namespace Stub\Service;
+namespace Stub\Provider;
 
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Events\Manager as EventsManager;
+use Symfony\Component\Console\Output\ConsoleOutput as Service;
+use Symfony\Component\Console\Output\Output;
 
-class EventManager implements ServiceProviderInterface
+class ConsoleOutput implements ServiceProviderInterface
 {
     /**
      * {@inheritdoc}
@@ -21,9 +22,9 @@ class EventManager implements ServiceProviderInterface
     public function register(DiInterface $di): void
     {
         $di->setShared(
-            'eventsManager',
+            'consoleOutput',
             function () {
-                return new EventsManager();
+                return new Service(Output::VERBOSITY_NORMAL, true);
             }
         );
     }

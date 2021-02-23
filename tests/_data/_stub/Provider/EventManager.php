@@ -7,13 +7,13 @@
  */
 declare(strict_types=1);
 
-namespace Stub\Service;
+namespace Stub\Provider;
 
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\Security as Service;
 use Phalcon\Di\DiInterface;
+use Phalcon\Events\Manager as EventsManager;
 
-class Security implements ServiceProviderInterface
+class EventManager implements ServiceProviderInterface
 {
     /**
      * {@inheritdoc}
@@ -21,14 +21,9 @@ class Security implements ServiceProviderInterface
     public function register(DiInterface $di): void
     {
         $di->setShared(
-            'security',
+            'eventsManager',
             function () {
-                $config = $this->get('config');
-                $service = new Service();
-                $service->setWorkFactor($config->security->encryption->workFactor);
-                $service->setDefaultHash($config->security->encryption->hash);
-
-                return $service;
+                return new EventsManager();
             }
         );
     }

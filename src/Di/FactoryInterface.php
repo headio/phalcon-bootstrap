@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap\Di;
 
-use Phalcon\Config;
 use Phalcon\Di\DiInterface;
 
 interface FactoryInterface

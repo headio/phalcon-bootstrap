@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Stub\Module\Frontend\Controller;
 
-use Phalcon\Mvc\Controller;
 use Phalcon\Http\Response;
 
 /**

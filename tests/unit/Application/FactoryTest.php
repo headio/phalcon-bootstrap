@@ -320,7 +320,7 @@ class FactoryTest extends UnitTest
         return [
             'middleware' => [],
             'services' => [
-                'Stub\Service\EventManager',
+                'Stub\Provider\EventManager',
             ]
         ];
     }

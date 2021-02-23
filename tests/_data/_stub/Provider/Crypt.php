@@ -7,7 +7,7 @@
  */
 declare(strict_types=1);
 
-namespace Stub\Service;
+namespace Stub\Provider;
 
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Crypt as Service;

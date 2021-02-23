@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap\Application;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Cli\Console;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Micro;

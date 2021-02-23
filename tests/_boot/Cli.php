@@ -62,12 +62,12 @@ $config = [
         ]
     ],
     'services' => [
-        'Stub\Service\EventManager',
-        'Stub\Service\Logger',
-        'Stub\Service\Loader',
-        'Stub\Service\Dispatcher',
-        'Stub\Service\Router',
-        'Stub\Service\ConsoleOutput',
+        'Stub\Provider\EventManager',
+        'Stub\Provider\Logger',
+        'Stub\Provider\Loader',
+        'Stub\Provider\Dispatcher',
+        'Stub\Provider\Router',
+        'Stub\Provider\ConsoleOutput',
     ],
     'timezone' => 'Europe/London'
 ];

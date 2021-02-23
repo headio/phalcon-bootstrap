@@ -12,10 +12,8 @@ namespace Headio\Phalcon\Bootstrap\Cli\Console;
 use Headio\Phalcon\Bootstrap\Exception\MissingDependencyException;
 use Phalcon\Cli\Console;
 use Phalcon\Cli\TaskInterface;
-use Phalcon\Config;
 use function rewind;
 use function stream_get_contents;
-use function str_replace;
 use function ftruncate;
 use Closure;
 

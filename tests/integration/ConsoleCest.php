@@ -319,11 +319,11 @@ EOT;
                 'Stub\\Middleware\\Foo'
             ],
             'services' => [
-                'Stub\Service\EventManager',
-                'Stub\Service\Logger',
-                'Stub\Service\Dispatcher',
-                'Stub\Service\Router',
-                'Stub\Service\ConsoleOutput',
+                'Stub\Provider\EventManager',
+                'Stub\Provider\Logger',
+                'Stub\Provider\Dispatcher',
+                'Stub\Provider\Router',
+                'Stub\Provider\ConsoleOutput',
             ],
             'timezone' => 'Europe/Berlin'
         ];

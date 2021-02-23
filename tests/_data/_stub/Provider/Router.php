@@ -7,14 +7,12 @@
  */
 declare(strict_types=1);
 
-namespace Stub\Service;
+namespace Stub\Provider;
 
 use Headio\Phalcon\Bootstrap\Exception\OutOfBoundsException;
-use Phalcon\Config;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Cli\Router as CliService;
-use Phalcon\Mvc\Router as MvcRouter;
 use Phalcon\Mvc\Router\Annotations as MvcService;
 
 class Router implements ServiceProviderInterface

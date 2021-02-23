@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Unit\Cli\Console;
 
-use Headio\Phalcon\Bootstrap\Cli\ConsoleInterface;
 use Headio\Phalcon\Bootstrap\Cli\Console\ConsoleTester;
 use Phalcon\Di;
 use Phalcon\Cli\Dispatcher\Exception as DispatcherException;
@@ -125,11 +124,11 @@ class ConsoleTesterTest extends UnitTest
                 'defaultTaskNamespace' => 'Stub\\Task',
             ],
             'services' => [
-                'Stub\Service\EventManager',
-                'Stub\Service\Logger',
-                'Stub\Service\Dispatcher',
-                'Stub\Service\Router',
-                'Stub\Service\ConsoleOutput'
+                'Stub\Provider\EventManager',
+                'Stub\Provider\Logger',
+                'Stub\Provider\Dispatcher',
+                'Stub\Provider\Router',
+                'Stub\Provider\ConsoleOutput'
             ],
             'timezone' => 'Europe/Berlin'
         ];

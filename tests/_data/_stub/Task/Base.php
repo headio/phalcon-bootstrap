@@ -16,7 +16,6 @@ use Phalcon\Mvc\Model\ResultsetInterface;
 use Phalcon\Mvc\Model\ValidationFailed;
 use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Helper\TableSeparator;
 use function implode;
 use Throwable;
 

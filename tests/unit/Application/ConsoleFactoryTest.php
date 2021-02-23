@@ -11,7 +11,6 @@ namespace Unit\Application;
 
 use Headio\Phalcon\Bootstrap\Application\Factory;
 use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
-use Headio\Phalcon\Bootstrap\Cli\ConsoleInterface;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
 use Phalcon\Config;
 use Phalcon\Di\DiInterface;
@@ -169,11 +168,11 @@ class ConsoleFactoryTest extends UnitTest
                 ]
             ],
             'services' => [
-                'Stub\Service\EventManager', // load first
-                'Stub\Service\Logger',
-                'Stub\Service\Dispatcher',
-                'Stub\Service\Router',
-                'Stub\Service\ConsoleOutput',
+                'Stub\Provider\EventManager', // load first
+                'Stub\Provider\Logger',
+                'Stub\Provider\Dispatcher',
+                'Stub\Provider\Router',
+                'Stub\Provider\ConsoleOutput',
             ],
             'timezone' => 'Europe/London'
         ];

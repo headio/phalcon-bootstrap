@@ -180,10 +180,10 @@ class FactoryTest extends UnitTest
                 ]
             ],
             'services' => [
-                'Stub\Service\EventManager',
-                'Stub\Service\Annotation',
-                'Stub\Service\Crypt',
-                'Stub\Service\Security'
+                'Stub\Provider\EventManager',
+                'Stub\Provider\Annotation',
+                'Stub\Provider\Crypt',
+                'Stub\Provider\Security'
             ],
             'timezone' => 'Europe/London'
         ];

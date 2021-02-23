@@ -146,11 +146,11 @@ class MvcCest
                 ],
             ],
             'services' => [
-                'Stub\Service\EventManager',
-                'Stub\Service\Annotation',
-                'Stub\Service\Dispatcher',
-                'Stub\Service\Router',
-                'Stub\Service\View'
+                'Stub\Provider\EventManager',
+                'Stub\Provider\Annotation',
+                'Stub\Provider\Dispatcher',
+                'Stub\Provider\Router',
+                'Stub\Provider\View'
             ],
             'timezone' => 'Europe/Berlin',
             'view' => [

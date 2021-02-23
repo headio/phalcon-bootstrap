@@ -7,14 +7,13 @@
  */
 declare(strict_types=1);
 
-namespace Stub\Service;
+namespace Stub\Provider;
 
 use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\Security as Service;
 use Phalcon\Di\DiInterface;
-use Symfony\Component\Console\Output\ConsoleOutput as Service;
-use Symfony\Component\Console\Output\Output;
 
-class ConsoleOutput implements ServiceProviderInterface
+class Security implements ServiceProviderInterface
 {
     /**
      * {@inheritdoc}
@@ -22,9 +21,14 @@ class ConsoleOutput implements ServiceProviderInterface
     public function register(DiInterface $di): void
     {
         $di->setShared(
-            'consoleOutput',
+            'security',
             function () {
-                return new Service(Output::VERBOSITY_NORMAL, true);
+                $config = $this->get('config');
+                $service = new Service();
+                $service->setWorkFactor($config->security->encryption->workFactor);
+                $service->setDefaultHash($config->security->encryption->hash);
+
+                return $service;
             }
         );
     }

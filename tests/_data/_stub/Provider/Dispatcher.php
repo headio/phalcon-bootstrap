@@ -7,11 +7,10 @@
  */
 declare(strict_types=1);
 
-namespace Stub\Service;
+namespace Stub\Provider;
 
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Events\EventInterface;
 use Phalcon\Cli\Dispatcher as CliService;
 use Phalcon\Mvc\Dispatcher as MvcService;
 
