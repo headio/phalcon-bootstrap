@@ -33,9 +33,9 @@ class View implements ServiceProviderInterface
                 $volt = new Volt($service, $this);
                 $volt->setOptions(
                     [
-                        'compiledPath' => $config->view->compiledPath,
-                        'compiledSeparator' => $config->view->compiledSeparator,
-                        'compileAlways' => $config->debug
+                        'always' => $config->debug,
+                        'path' => $config->view->compiledPath,
+                        'separator' => $config->view->compiledSeparator,
                     ]
                 );
                 $compiler = $volt->getCompiler();
