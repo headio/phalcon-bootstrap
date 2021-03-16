@@ -14,6 +14,7 @@ use Phalcon\Cli\Console;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Micro;
 use Phalcon\Di\DiInterface;
+use function is_iterable;
 
 /**
  * A simple application factory, encapsulating module registration,
@@ -87,6 +88,7 @@ class Factory implements FactoryInterface
         require $handlers;
 
         $eventManager = $di->get('eventsManager');
+        $eventManager->enablePriorities(true);
 
         /**
          * Attach middleware
@@ -94,7 +96,13 @@ class Factory implements FactoryInterface
         if (isset($config->middleware)) {
             foreach ($config->middleware->toArray() ?? [] as $middleware => $event) {
                 $instance = new $middleware();
-                $eventManager->attach('micro', $instance);
+                $priority = $eventManager::DEFAULT_PRIORITY;
+
+                if (is_iterable($event)) {
+                    list($event, $priority) = $event;
+                }
+
+                $eventManager->attach('micro', $instance, $priority);
                 $app->{$event}($instance);
             }
         }
