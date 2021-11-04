@@ -6,7 +6,7 @@ composer.lock
 *.env
 *.bak
 *.cache
-.php_cs
+.php-cs-fixer.cache
 
 # editors
 .vscode/*
