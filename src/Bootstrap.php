@@ -24,19 +24,17 @@ class Bootstrap implements BootstrapInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static function handle(DiInterface $di): BootstrapInterface
     {
         $factory = new Factory($di);
 
-        return new static($factory);
+        return new self($factory);
     }
 
     /**
-     * Run the application
-     *
-     * @return ResponseInterface|bool
+     * {@inheritDoc}
      */
     public function run(string $uri, ?int $context = null)
     {

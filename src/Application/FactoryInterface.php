@@ -30,7 +30,7 @@ interface FactoryInterface
     public function createForMicro(): Micro;
 
     /**
-     * Bootstrap an application following the mvc patteren,
+     * Bootstrap an application following the mvc pattern,
      * encapsulating module registration, event management
      * and middleware logic assignment.
      */

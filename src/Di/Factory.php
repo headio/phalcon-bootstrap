@@ -29,7 +29,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function createDefaultMvc(): DiInterface
     {
@@ -39,7 +39,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function createDefaultCli(): DiInterface
     {
@@ -49,11 +49,10 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function create(DiInterface $di): DiInterface
     {
-        /** @var Config */
         $config = $this->config;
         $config->cli = false;
 

@@ -9,27 +9,19 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap\Cli\Console;
 
+use Closure;
 use Headio\Phalcon\Bootstrap\Exception\MissingDependencyException;
 use Phalcon\Cli\Console;
 use Phalcon\Cli\TaskInterface;
+use function ftruncate;
 use function rewind;
 use function stream_get_contents;
-use function ftruncate;
-use Closure;
 
 class ConsoleTester
 {
     private Console $console;
 
-    /**
-     * @var TaskInterface
-     */
-    private TaskInterface $task;
-
-    /**
-     * @var \Resource
-     */
-    private $stream;
+    private ?TaskInterface $task = null;
 
     public function __construct(Console $console)
     {
@@ -43,11 +35,13 @@ class ConsoleTester
      */
     public function setStream(Closure $closure): self
     {
-        /** @var DiInterface */
+        /** @var \Phalcon\Di\DiInterface */
         $di = $this->console->getDI();
 
         if (!$di->has('consoleOutput')) {
-            throw new MissingDependencyException('Missing "ConsoleOutput" service dependency');
+            throw new MissingDependencyException(
+                'Missing "ConsoleOutput" service dependency'
+            );
         }
 
         $service = $di->getService('consoleOutput')->setDefinition($closure);
@@ -60,17 +54,11 @@ class ConsoleTester
      */
     public function execute(array $server): void
     {
-        /** @var DiInterface */
-        $di = $this->console->getDI();
-
-        /** @var TaskInterface */
         $this->task = $this->console->setArgument($server)->handle();
-
-        $this->stream = $di->get('consoleOutput')->getStream();
     }
 
     /**
-     * Return the console application instance
+     * Return the console application instance.
      */
     public function getApplication(): Console
     {
@@ -78,19 +66,11 @@ class ConsoleTester
     }
 
     /**
-     * Return the current task instance
+     * Return the current task instance.
      */
-    public function getTask(): TaskInterface
+    public function getTask(): ?TaskInterface
     {
         return $this->task;
-    }
-
-    /**
-     * Return the stream from the stream handler.
-     */
-    public function getStream()
-    {
-        return $this->stream;
     }
 
     /**
@@ -98,11 +78,17 @@ class ConsoleTester
      */
     public function getOutput(): string
     {
-        rewind($this->stream);
-        $output = stream_get_contents($this->stream);
+        /** @var \Phalcon\Di\DiInterface */
+        $di = $this->console->getDI();
+        $stream = $di->get('consoleOutput')->getStream();
 
+        if (!$stream) {
+            return '';
+        }
+
+        rewind($stream);
         // ftruncate($this->stream, 0);
 
-        return $output;
+        return stream_get_contents($stream);
     }
 }

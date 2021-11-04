@@ -21,7 +21,7 @@ interface BootstrapInterface
     /**
      * Run the console application and return the response.
      *
-     * @return Phalcon\Cli\TaskInterface|bool
+     * @return bool|\Phalcon\Cli\TaskInterface
      */
     public function run(array $server);
 }

@@ -23,23 +23,21 @@ class Bootstrap implements BootstrapInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static function handle(DiInterface $di): BootstrapInterface
     {
         $factory = new Factory($di);
 
-        return new static($factory);
+        return new self($factory);
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @return Phalcon\Cli\TaskInterface|bool
+     * {@inheritDoc}
      */
     public function run(array $server)
     {
-        /** @var Phalcon\Cli\Console */
+        /** @var \Phalcon\Cli\Console */
         $app = $this->factory->createForCli();
 
         return $app->setArgument($server['argv'])->handle();

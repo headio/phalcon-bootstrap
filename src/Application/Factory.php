@@ -32,13 +32,13 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function createForCli(): Console
     {
-        /** @var DiInterface */
         $di = $this->di;
         $app = new Console($di);
+        /** @var \Phalcon\Config */
         $config = $di->get('config');
 
         /**
@@ -48,6 +48,7 @@ class Factory implements FactoryInterface
             $app->registerModules($config->modules->toArray());
         }
 
+        /** @var \Phalcon\Events\ManagerInterface */
         $eventManager = $di->get('eventsManager');
 
         /**
@@ -67,26 +68,26 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function createForMicro(): Micro
     {
-        /** @var DiInterface */
         $di = $this->di;
         $app = new Micro($di);
         $config = $di->get('config');
-
-        /**
-         * Register handlers
-         */
         $handlers = $config->path('handlerPath', null);
 
         if (is_null($handlers) || !file_exists($handlers)) {
             throw new OutOfBoundsException('Could not load application handlers');
         }
 
+        if (!is_file($handlers)) {
+            throw new OutOfBoundsException('Could not find application handlers');
+        }
+
         require $handlers;
 
+        /** @var \Phalcon\Events\ManagerInterface */
         $eventManager = $di->get('eventsManager');
         $eventManager->enablePriorities(true);
 
@@ -98,7 +99,7 @@ class Factory implements FactoryInterface
                 $instance = new $middleware();
                 $priority = $eventManager::DEFAULT_PRIORITY;
 
-                if (is_iterable($event)) {
+                if (is_array($event)) {
                     list($event, $priority) = $event;
                 }
 
@@ -113,11 +114,10 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function createForMvc(): Application
     {
-        /** @var DiInterface */
         $di = $this->di;
         $app = new Application($di);
         $config = $di->get('config');
@@ -131,6 +131,7 @@ class Factory implements FactoryInterface
             $app->registerModules($config->modules->toArray());
         }
 
+        /** @var \Phalcon\Events\ManagerInterface */
         $eventManager = $di->get('eventsManager');
 
         /**

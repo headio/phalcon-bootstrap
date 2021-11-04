@@ -38,7 +38,7 @@ class NotFoundMiddleware extends Injectable implements MiddlewareInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @return Bool
      */
