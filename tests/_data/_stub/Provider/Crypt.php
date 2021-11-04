@@ -16,7 +16,7 @@ use Phalcon\Di\DiInterface;
 class Crypt implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di): void
     {

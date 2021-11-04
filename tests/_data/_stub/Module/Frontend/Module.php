@@ -15,14 +15,14 @@ use Phalcon\Mvc\ModuleDefinitionInterface;
 class Module implements ModuleDefinitionInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function registerAutoloaders(DiInterface $di = null)
     {
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function registerServices(DiInterface $di)
     {

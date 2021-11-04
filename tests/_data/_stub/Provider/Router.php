@@ -18,7 +18,7 @@ use Phalcon\Mvc\Router\Annotations as MvcService;
 class Router implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di): void
     {

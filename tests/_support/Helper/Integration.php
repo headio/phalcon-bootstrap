@@ -26,7 +26,6 @@ class Integration extends \Codeception\Module
      */
     public function bootConsole(array $global): Console
     {
-        /** @var Config */
         $config = new Config($global);
 
         /** @var Phalcon\Di\DiInterface */
@@ -44,7 +43,6 @@ class Integration extends \Codeception\Module
      */
     public function bootMvc(array $global): BootstrapInterface
     {
-        /** @var Config */
         $config = new Config($global);
 
         /** @var Phalcon\Di\DiInterface */
@@ -57,7 +55,7 @@ class Integration extends \Codeception\Module
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function debug($mixed)
     {
@@ -95,17 +93,5 @@ class Integration extends \Codeception\Module
     public function sendRequest(string $method, string $uri, ?array $params)
     {
         return $this->getModule('Phalcon')->_request($method, $uri, $params ?? []);
-    }
-
-    /**
-     * Validate the response payload
-     */
-    public function seeResponseEquals(string $content): bool
-    {
-        $this->assertEquals(
-            $content,
-            $this->getModule('Phalcon')->_getResponseContent(),
-            "response payload"
-        );
     }
 }

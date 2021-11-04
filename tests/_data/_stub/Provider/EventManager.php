@@ -16,7 +16,7 @@ use Phalcon\Events\Manager as EventsManager;
 class EventManager implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di): void
     {

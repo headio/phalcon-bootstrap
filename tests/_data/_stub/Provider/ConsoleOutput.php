@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\Output;
 class ConsoleOutput implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di): void
     {

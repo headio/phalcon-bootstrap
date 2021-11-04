@@ -17,7 +17,7 @@ use Phalcon\Loader as Service;
 class Loader implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di): void
     {

@@ -23,7 +23,6 @@ class Unit extends \Codeception\Module
      */
     public function bootConsole(array $global): Console
     {
-        /** @var Config */
         $config = new Config($global);
 
         /** @var Phalcon\Di\DiInterface */

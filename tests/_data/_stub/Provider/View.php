@@ -21,7 +21,7 @@ use Stub\View\VoltExtension;
 class View implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di): void
     {

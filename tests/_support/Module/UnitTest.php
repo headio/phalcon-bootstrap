@@ -28,21 +28,21 @@ class UnitTest extends Unit
     protected $tester;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function _before()
     {
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function _after()
     {
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function debug($mixed)
     {

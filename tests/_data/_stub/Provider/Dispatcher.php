@@ -17,7 +17,7 @@ use Phalcon\Mvc\Dispatcher as MvcService;
 class Dispatcher implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di): void
     {

@@ -19,7 +19,7 @@ use Phalcon\Di\DiInterface;
 class Logger implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di): void
     {
