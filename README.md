@@ -165,8 +165,8 @@ require_once __DIR__ . '/vendor/autoload.php';
         function (Throwable $e) use ($di) {
             $di->get('logger')->error($e->getMessage(), ['exception' => $e]);
 
+            // Verbose exception handling in development
             if ($di->get('config')->debug) {
-                // Handle exception
             }
 
             exit(1);
@@ -334,7 +334,7 @@ require_once __DIR__ . '/vendor/autoload.php';
         function (Throwable $e) use ($di) {
             $di->get('logger')->error($e->getMessage(), ['exception' => $e]);
 
-            // Handle exceptions in development
+            // Verbose exception handling in development
             if ($di->get('config')->debug) {
             }
 
@@ -450,7 +450,7 @@ require_once __DIR__ . '/vendor/autoload.php';
             $output = $di->get('consoleOutput');
             $output->writeln('<error>' . $e->getMessage() . '</error>');
 
-            // Handle exceptions in development
+            // Verbose exception handling in development
             if ($di->get('config')->debug) {
                 $output->writeln(sprintf(
                     '<error>Exception thrown in: %s at line %d.</error>',
@@ -470,7 +470,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 ## DI container factory
 
-From the examples above you probably noticed from the naming convention that we instantiated Phalcon's factory default mvc or cli container.
+From the examples above you will have noticed that we instantiated Phalcon's factory default mvc or cli container services.
 
 ```php
 $config = new Config(
@@ -523,7 +523,7 @@ use Phalcon\Mvc\Router\Annotations as MvcService;
 class Router implements ServiceProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(DiInterface $di) : void
     {
