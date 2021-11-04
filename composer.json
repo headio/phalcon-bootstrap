@@ -31,9 +31,14 @@
     "codeception/module-phalcon": "^1.0",
     "codeception/specify": "^1.4",
     "codeception/verify": "^1.5",
-    "friendsofphp/php-cs-fixer": "^2.17",
+    "friendsofphp/php-cs-fixer": "*",
     "mockery/mockery": "^1.3",
-    "symfony/console": "5.0.0"
+    "symfony/console": "5.0.0",
+    "vimeo/psalm": "^4.11"
+  },
+  "scripts": {
+    "lint": "php-cs-fixer fix --diff --dry-run",
+    "fix": "php-cs-fixer fix"
   },
   "autoload": {
     "psr-4": {
