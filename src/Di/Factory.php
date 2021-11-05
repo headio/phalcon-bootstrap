@@ -54,10 +54,10 @@ class Factory implements FactoryInterface
     public function create(DiInterface $di): DiInterface
     {
         $config = $this->config;
-        $config->cli = false;
+        $config->set('cli', false);
 
         if ($di instanceof Cli) {
-            $config->cli = true;
+            $config->set('cli', true);
         }
 
         $di->setShared('config', $config);

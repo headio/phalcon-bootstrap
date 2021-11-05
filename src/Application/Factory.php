@@ -48,7 +48,7 @@ class Factory implements FactoryInterface
             $app->registerModules($config->modules->toArray());
         }
 
-        /** @var \Phalcon\Events\ManagerInterface */
+        /** @var \Phalcon\Events\Manager */
         $eventManager = $di->get('eventsManager');
 
         /**
@@ -74,6 +74,7 @@ class Factory implements FactoryInterface
     {
         $di = $this->di;
         $app = new Micro($di);
+        /** @var \Phalcon\Config */
         $config = $di->get('config');
         $handlers = $config->path('handlerPath', null);
 
@@ -87,7 +88,7 @@ class Factory implements FactoryInterface
 
         require $handlers;
 
-        /** @var \Phalcon\Events\ManagerInterface */
+        /** @var \Phalcon\Events\Manager */
         $eventManager = $di->get('eventsManager');
         $eventManager->enablePriorities(true);
 
@@ -120,6 +121,7 @@ class Factory implements FactoryInterface
     {
         $di = $this->di;
         $app = new Application($di);
+        /** @var \Phalcon\Config */
         $config = $di->get('config');
 
         $app->useImplicitView(isset($config->view));
@@ -131,7 +133,7 @@ class Factory implements FactoryInterface
             $app->registerModules($config->modules->toArray());
         }
 
-        /** @var \Phalcon\Events\ManagerInterface */
+        /** @var \Phalcon\Events\Manager */
         $eventManager = $di->get('eventsManager');
 
         /**
