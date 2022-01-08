@@ -1,7 +1,7 @@
 language: php
 
 php:
-    - 7.4
+    - 8.0
 
 os: linux
 
@@ -9,7 +9,7 @@ dist: bionic
 
 env:
   global:
-    - PHALCON_VERSION="v4.1.0"
+    - PHALCON_VERSION="v5.0.0beta2"
 
 git:
   depth: 1
