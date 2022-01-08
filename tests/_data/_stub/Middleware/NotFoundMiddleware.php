@@ -24,13 +24,12 @@ class NotFoundMiddleware extends Injectable implements MiddlewareInterface
         $response
             ->setStatusCode(404)
             ->setContent('404 Not Found')
-            ->send();
-
+            ->send()
+        ;
         /**
          * Prevent further middleware execution
          */
         $this->application->stop();
-
         /**
          * Stop further execution
          */
@@ -39,8 +38,6 @@ class NotFoundMiddleware extends Injectable implements MiddlewareInterface
 
     /**
      * {@inheritDoc}
-     *
-     * @return Bool
      */
     public function call(Micro $application)
     {

@@ -16,7 +16,7 @@ LOCAL_PATH="phalcon-$PHALCON_VERSION/php-$(php-config --vernum)/$TRAVIS_ARCH"
 
 # Using cache only for tagged Phalcon versions
 if [ "$PHALCON_VERSION" != "master" ] &&
-   [ "$PHALCON_VERSION" != "4.1.x" ] &&
+   [ "$PHALCON_VERSION" != "5.0.x" ] &&
    [ -f "$HOME/assets/$LOCAL_PATH/phalcon.so" ]
 then
   cp "$HOME/assets/$LOCAL_PATH/phalcon.so" "$EXT_DIR/phalcon.so"

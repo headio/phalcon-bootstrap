@@ -40,8 +40,8 @@ class Foo extends BaseTask
 
     public function timezoneAction()
     {
-        $timezone = $this->getDI()->getConfig()['timezone'];
-
+        /** @var string */
+        $timezone = $this->getDI()->getConfig()->get('timezone');
         $this->output->writeln('<info>' . $timezone . '</info>');
 
         return 0;
@@ -67,6 +67,7 @@ class Foo extends BaseTask
         }
 
         $this->output->writeln('<info>Role created</info>');
+
         return 0;
     }
 

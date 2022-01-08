@@ -52,8 +52,8 @@ script:
 jobs:
   include:
     - stage: Test coverage
-      if: branch = 4.x AND type = push
-      php: 7.4
+      if: branch = 5.x AND type = push
+      php: 8.0
       script:
         - make coverage
       after_script:

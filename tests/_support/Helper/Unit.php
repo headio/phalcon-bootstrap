@@ -12,7 +12,7 @@ namespace Helper;
 use Headio\Phalcon\Bootstrap\Application\Factory as AppFactory;
 use Headio\Phalcon\Bootstrap\Cli\Console\ConsoleTester;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Cli\Console;
 use Symfony\Component\Console\Output\StreamOutput;
 
@@ -25,7 +25,7 @@ class Unit extends \Codeception\Module
     {
         $config = new Config($global);
 
-        /** @var Phalcon\Di\DiInterface */
+        /** @var \Phalcon\Di\DiInterface */
         $di = (new DiFactory($config))->createDefaultCli();
 
         /** @var Console */

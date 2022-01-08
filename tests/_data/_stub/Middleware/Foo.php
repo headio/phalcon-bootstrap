@@ -17,7 +17,7 @@ class Foo
     public function beforeHandleTask(EventInterface $event, Console $app): bool
     {
         $config = $app->getDI()->getConfig();
-        $config['timezone'] = 'America/New_York';
+        $config->set('timezone', 'America/New_York');
 
         return true;
     }

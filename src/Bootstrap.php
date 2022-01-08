@@ -14,13 +14,10 @@ use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Http\ResponseInterface;
 
-class Bootstrap implements BootstrapInterface
+final class Bootstrap implements BootstrapInterface
 {
-    private FactoryInterface $factory;
-
-    public function __construct(FactoryInterface $factory)
+    public function __construct(private FactoryInterface $factory)
     {
-        $this->factory = $factory;
     }
 
     /**
@@ -30,13 +27,13 @@ class Bootstrap implements BootstrapInterface
     {
         $factory = new Factory($di);
 
-        return new self($factory);
+        return new static($factory);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function run(string $uri, ?int $context = null)
+    public function run(string $uri, ?int $context = null): bool|ResponseInterface
     {
         if ($context === Bootstrap::Micro) {
             return $this->factory->createForMicro()->handle($uri);

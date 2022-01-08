@@ -1,58 +1,59 @@
 {
-  "name": "headio/phalcon-bootstrap",
-  "description": "A flexible application bootstrap for phalcon projects.",
-  "type": "library",
-  "keywords" : [
-    "Phalcon", 
-    "Application bootstrap"
-  ],
-  "license": "MIT",
-  "authors": [
-    {
-      "name":"Dominic Beck",
-      "email":"dominic.beck360@gmail.com"
-    }
-  ],
-  "config": {
-    "optimize-autoloader": true,
-    "sort-packages": true,
-    "platform": {
-      "php": "7.4"
-    }
-  },
-  "require": {
-    "php": ">=7.4 <8.0",
-    "ext-mbstring": "*",
-    "ext-phalcon": ">= 4.1.0"
-  },
-  "require-dev": {
-    "codeception/codeception": "^4.0",
-    "codeception/module-asserts": "^1.1",
-    "codeception/module-phalcon": "^1.0",
-    "codeception/specify": "^1.4",
-    "codeception/verify": "^1.5",
-    "friendsofphp/php-cs-fixer": "*",
-    "mockery/mockery": "^1.3",
-    "symfony/console": "5.0.0",
-    "vimeo/psalm": "^4.11"
-  },
-  "scripts": {
-    "lint": "php-cs-fixer fix --diff --dry-run",
-    "fix": "php-cs-fixer fix"
-  },
-  "autoload": {
-    "psr-4": {
-      "Headio\\Phalcon\\Bootstrap\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Integration\\": "tests/integration/",
-      "Unit\\": "tests/unit/",
-      "Stub\\": "tests/_data/_stub/",
-      "Module\\": "tests/_support/Module/"
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "name": "headio/phalcon-bootstrap",
+    "description": "A flexible application bootstrap for phalcon projects.",
+    "type": "library",
+    "keywords": [
+        "Phalcon",
+        "Application bootstrap"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dominic Beck",
+            "email": "dominic.beck360@gmail.com"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "ext-mbstring": "*",
+        "ext-phalcon": ">= 5.0.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.1.0",
+        "codeception/module-asserts": "^1.1",
+        "codeception/module-phalcon5": "^1.0.1",
+        "codeception/specify": "^1.4",
+        "codeception/verify": "^1.5",
+        "friendsofphp/php-cs-fixer": "*",
+        "mockery/mockery": "^1.3",
+        "phalcon/ide-stubs": "^5.0.0",
+        "symfony/console": "^5.0.0",
+        "vimeo/psalm": "^4.11"
+    },
+    "scripts": {
+        "lint": "php-cs-fixer fix --diff --dry-run",
+        "fix": "php-cs-fixer fix"
+    },
+    "autoload": {
+        "psr-4": {
+            "Headio\\Phalcon\\Bootstrap\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Integration\\": "tests/integration/",
+            "Unit\\": "tests/unit/",
+            "Stub\\": "tests/_data/_stub/",
+            "Module\\": "tests/_support/Module/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

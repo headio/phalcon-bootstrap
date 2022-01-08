@@ -9,23 +9,20 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap\Cli\Console;
 
-use Closure;
 use Headio\Phalcon\Bootstrap\Exception\MissingDependencyException;
 use Phalcon\Cli\Console;
 use Phalcon\Cli\TaskInterface;
+use Closure;
 use function ftruncate;
 use function rewind;
 use function stream_get_contents;
 
-class ConsoleTester
+final class ConsoleTester
 {
-    private Console $console;
-
     private ?TaskInterface $task = null;
 
-    public function __construct(Console $console)
+    public function __construct(private Console $console)
     {
-        $this->console = $console;
     }
 
     /**
@@ -33,7 +30,7 @@ class ConsoleTester
      *
      * @throws MissingDependencyException
      */
-    public function setStream(Closure $closure): self
+    public function setStream(Closure $closure): static
     {
         /** @var \Phalcon\Di\DiInterface */
         $di = $this->console->getDI();

@@ -1,8 +1,31 @@
 <?xml version="1.0"?>
 <psalm
     errorLevel="2"
+    name="Headio phalcon bootstrap"
+    allowStringToStandInForClass="true"
+    resolveFromConfigFile="true"
+    totallyTyped="true"
+    usePhpDocPropertiesWithoutMagicCall="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
     <projectFiles>
         <directory name="src" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
     </projectFiles>
+    <stubs>
+        <file name="vendor/phalcon/ide-stubs/src/Cli/Task.php"/>
+        <file name="vendor/phalcon/ide-stubs/src/Di/AbstractInjectionAware.php"/>
+        <file name="vendor/phalcon/ide-stubs/src/Di/Injectable.php"/>
+        <file name="tests/_bootstrap.php"/>
+    </stubs>
+    <issueHandlers>
+        <!-- multiple Phalcon method signature interface mismatches -->
+        <MethodSignatureMismatch errorLevel="info" />
+        <!-- multiple Phalcon missing interface methods -->
+        <UndefinedInterfaceMethod errorLevel="info" />
+    </issueHandlers>
 </psalm>

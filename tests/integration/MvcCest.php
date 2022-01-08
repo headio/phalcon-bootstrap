@@ -15,9 +15,9 @@ use IntegrationTester;
 
 class MvcCest
 {
-    private $bootstrap;
+    private ?BootstrapInterface $bootstrap = null;
 
-    public function _before(IntegrationTester $I)
+    public function _before(IntegrationTester $I): void
     {
         $I->wantTo('Bootstrap mvc application using factory');
 
@@ -28,12 +28,12 @@ class MvcCest
         $this->bootstrap = $bootstrap;
     }
 
-    protected function _after(IntegrationTester $I)
+    protected function _after(IntegrationTester $I): void
     {
         $this->bootstrap = null;
     }
 
-    public function executeRequestOnDefaultHandler(IntegrationTester $I)
+    public function executeRequestOnDefaultHandler(IntegrationTester $I): void
     {
         $I->wantTo('Execute request on default handler');
 
@@ -48,7 +48,7 @@ class MvcCest
         $I->assertEquals('Hello world', $response->getContent());
     }
 
-    public function executeRequestOnDefaultHandlerInDefaultModule(IntegrationTester $I)
+    public function executeRequestOnDefaultHandlerInDefaultModule(IntegrationTester $I): void
     {
         $I->wantTo('Execute named request on default handler');
 
@@ -63,7 +63,7 @@ class MvcCest
         $I->assertEquals('Hello contact', $response->getContent());
     }
 
-    public function executeUnknownRoute(IntegrationTester $I)
+    public function executeUnknownRoute(IntegrationTester $I): void
     {
         $I->wantTo('Execute request with unknown route');
 
@@ -78,7 +78,7 @@ class MvcCest
         $I->assertEquals('Hello world', $response->getContent());
     }
 
-    public function executeRequestOnAdminHandlerInKnownModule(IntegrationTester $I)
+    public function executeRequestOnAdminHandlerInKnownModule(IntegrationTester $I): void
     {
         $I->wantTo('Execute named request on admin handler in admin module');
 

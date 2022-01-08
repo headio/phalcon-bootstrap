@@ -12,30 +12,27 @@ namespace Integration;
 use Headio\Phalcon\Bootstrap\Bootstrap;
 use Headio\Phalcon\Bootstrap\BootstrapInterface;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Http\ResponseInterface;
 use Stub\Middleware\NotFoundMiddleware;
 use IntegrationTester;
 
 class MicroCest
 {
-    private $bootstrap;
+    private ?BootstrapInterface $bootstrap = null;
 
-    public function _before(IntegrationTester $I)
+    public function _before(IntegrationTester $I): void
     {
-        /** @var Phalcon\Di\DiInterface */
         $di = (new DiFactory(new Config($this->_config())))->createDefaultMvc();
-
-        /** @var BootstrapInterface */
         $this->bootstrap = Bootstrap::handle($di);
     }
 
-    protected function _after(IntegrationTester $I)
+    protected function _after(IntegrationTester $I): void
     {
         $this->bootstrap = null;
     }
 
-    public function executeIndexActionOnIndexHandler(IntegrationTester $I)
+    public function executeIndexActionOnIndexHandler(IntegrationTester $I): void
     {
         $I->wantTo('Execute request on index action in user handler.');
 
@@ -54,7 +51,7 @@ class MicroCest
         $I->assertEquals('Hello world', $response->getContent());
     }
 
-    public function executeIndexActionOnUserHandler(IntegrationTester $I)
+    public function executeIndexActionOnUserHandler(IntegrationTester $I): void
     {
         $I->wantTo('Execute request on index action in user handler.');
 
@@ -73,7 +70,7 @@ class MicroCest
         $I->assertEquals('Stub\Module\Admin\Controller\User::indexAction', $response->getContent());
     }
 
-    public function executeReadActionOnUserHandler(IntegrationTester $I)
+    public function executeReadActionOnUserHandler(IntegrationTester $I): void
     {
         $I->wantTo('Execute request on read action in user handler.');
 
@@ -95,9 +92,6 @@ class MicroCest
         );
     }
 
-    /**
-     * Return test config
-     */
     private function _config(): array
     {
         return [

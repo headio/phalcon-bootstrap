@@ -11,9 +11,8 @@ A simple factory instantiates the DI container, encapsulating the registration o
 
 ## Dependencies
 
-* PHP >=7.4 <8.0
-* Phalcon >=4.1.0
-* Symfony console >=5.0
+* PHP >=8.0
+* Phalcon >=5.0.0
 
 See composer.json for more details  
 
@@ -133,7 +132,7 @@ declare(strict_types=1);
 
 use Headio\Phalcon\Bootstrap\Bootstrap;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -302,7 +301,7 @@ declare(strict_types=1);
 
 use Headio\Phalcon\Bootstrap\Bootstrap;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -421,7 +420,7 @@ declare(strict_types=1);
 
 use Headio\Phalcon\Bootstrap\Cli\Bootstrap;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -513,7 +512,7 @@ declare(strict_types=1);
 namespace Foo\Service;
 
 use Foo\Exception\OutOfRangeException;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Cli\Router as CliService;
@@ -604,7 +603,7 @@ declare(strict_types=1);
 
 use Headio\Phalcon\Bootstrap\Application\Factory as AppFactory;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 chdir(dirname(__DIR__));
 

@@ -3,6 +3,7 @@ modules:
     enabled:
         - Asserts
         - \Helper\Integration
-        - Phalcon:
+        - Phalcon5:
             bootstrap: tests/_boot/Cli.php
-    step_decorators: ~
+            cleanup: true
+            savepoints: true

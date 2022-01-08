@@ -22,24 +22,7 @@ class UnitTest extends Unit
 {
     use Specify;
 
-    /**
-     * @var UnitTester
-     */
-    protected $tester;
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function _before()
-    {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function _after()
-    {
-    }
+    protected UnitTester $tester;
 
     /**
      * {@inheritDoc}

@@ -24,11 +24,8 @@ use function is_iterable;
  */
 class Factory implements FactoryInterface
 {
-    private DiInterface $di;
-
-    public function __construct(DiInterface $di)
+    public function __construct(private DiInterface $di)
     {
-        $this->di = $di;
     }
 
     /**
@@ -38,24 +35,16 @@ class Factory implements FactoryInterface
     {
         $di = $this->di;
         $app = new Console($di);
-        /** @var \Phalcon\Config */
         $config = $di->get('config');
 
-        /**
-         * Register modules
-         */
-        if (isset($config->modules)) {
-            $app->registerModules($config->modules->toArray());
+        if ($config->has('modules')) {
+            $app->registerModules($config->get('modules')->toArray());
         }
 
-        /** @var \Phalcon\Events\Manager */
         $eventManager = $di->get('eventsManager');
 
-        /**
-         * Attach middleware
-         */
-        if (isset($config->middleware)) {
-            foreach ($config->middleware->toArray() ?? [] as $middleware) {
+        if ($config->has('middleware')) {
+            foreach ($config->get('middleware')->toArray() ?? [] as $middleware) {
                 $instance = new $middleware();
                 $eventManager->attach('console', $instance);
             }
@@ -74,7 +63,6 @@ class Factory implements FactoryInterface
     {
         $di = $this->di;
         $app = new Micro($di);
-        /** @var \Phalcon\Config */
         $config = $di->get('config');
         $handlers = $config->path('handlerPath', null);
 
@@ -88,15 +76,11 @@ class Factory implements FactoryInterface
 
         require $handlers;
 
-        /** @var \Phalcon\Events\Manager */
         $eventManager = $di->get('eventsManager');
         $eventManager->enablePriorities(true);
 
-        /**
-         * Attach middleware
-         */
-        if (isset($config->middleware)) {
-            foreach ($config->middleware->toArray() ?? [] as $middleware => $event) {
+        if ($config->has('middleware')) {
+            foreach ($config->get('middleware')->toArray() ?? [] as $middleware => $event) {
                 $instance = new $middleware();
                 $priority = $eventManager::DEFAULT_PRIORITY;
 
@@ -121,26 +105,17 @@ class Factory implements FactoryInterface
     {
         $di = $this->di;
         $app = new Application($di);
-        /** @var \Phalcon\Config */
         $config = $di->get('config');
+        $app->useImplicitView($config->has('view') ?? false);
 
-        $app->useImplicitView(isset($config->view));
-
-        /**
-         * Register modules
-         */
-        if (isset($config->modules)) {
-            $app->registerModules($config->modules->toArray());
+        if ($config->has('modules')) {
+            $app->registerModules($config->get('modules')->toArray());
         }
 
-        /** @var \Phalcon\Events\Manager */
         $eventManager = $di->get('eventsManager');
 
-        /**
-         * Attach middleware
-         */
-        if (isset($config->middleware)) {
-            foreach ($config->middleware->toArray() ?? [] as $middleware) {
+        if ($config->has('middleware')) {
+            foreach ($config->get('middleware')->toArray() ?? [] as $middleware) {
                 $instance = new $middleware();
                 $eventManager->attach('application', $instance);
             }

@@ -12,14 +12,12 @@ namespace Headio\Phalcon\Bootstrap\Cli;
 use Headio\Phalcon\Bootstrap\Application\Factory;
 use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
 use Phalcon\Di\DiInterface;
+use Phalcon\Cli\TaskInterface;
 
 class Bootstrap implements BootstrapInterface
 {
-    private FactoryInterface $factory;
-
-    public function __construct(FactoryInterface $factory)
+    public function __construct(private FactoryInterface $factory)
     {
-        $this->factory = $factory;
     }
 
     /**
@@ -35,9 +33,8 @@ class Bootstrap implements BootstrapInterface
     /**
      * {@inheritDoc}
      */
-    public function run(array $server)
+    public function run(array $server): bool|TaskInterface
     {
-        /** @var \Phalcon\Cli\Console */
         $app = $this->factory->createForCli();
 
         return $app->setArgument($server['argv'])->handle();

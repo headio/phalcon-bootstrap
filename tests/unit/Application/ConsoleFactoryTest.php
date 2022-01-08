@@ -12,7 +12,7 @@ namespace Unit\Application;
 use Headio\Phalcon\Bootstrap\Application\Factory;
 use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Di\DiInterface;
 use Mockery;
 use Module\UnitTest;
@@ -23,7 +23,6 @@ class ConsoleFactoryTest extends UnitTest
 
     protected function _before()
     {
-        /** @var Config */
         $config = new Config($this->_config());
 
         /** @var DiInterface */
@@ -46,7 +45,7 @@ class ConsoleFactoryTest extends UnitTest
         $this->describe(
             'Factory can create console application',
             function () {
-                /** @var Phalcon\Cli\Console */
+                /** @var \Phalcon\Cli\Console */
                 $result = $this->mock->createForCli();
 
                 $this->should(
@@ -71,12 +70,9 @@ class ConsoleFactoryTest extends UnitTest
         $this->specify(
             'Factory can assign modules to console application',
             function () {
-                /** @var Console */
+                /** @var \Phalcon\Cli\Console */
                 $console = $this->mock->createForCli();
-
-                /** @var Config */
                 $config = new Config($this->_config());
-
                 /** @var array */
                 $result = $console->getModules();
 
@@ -90,9 +86,8 @@ class ConsoleFactoryTest extends UnitTest
         $this->specify(
             'Event Manager has correct number of registered listeners',
             function () {
-                /** @var Console */
+                /** @var \Phalcon\Cli\Console */
                 $console = $this->mock->createForCli();
-
                 /** @var array */
                 $result = $console->getEventsManager()->getListeners('console');
 
@@ -107,9 +102,8 @@ class ConsoleFactoryTest extends UnitTest
         $this->specify(
             'Event Manager receives assigned middleware',
             function () {
-                /** @var Console */
+                /** @var \Phalcon\Cli\Console */
                 $console = $this->mock->createForCli();
-
                 /** @var array */
                 $result = $console->getEventsManager()->getListeners('console');
 
@@ -123,9 +117,8 @@ class ConsoleFactoryTest extends UnitTest
         $this->specify(
             'Factory can create console service dependency',
             function () {
-                /** @var Console */
+                /** @var \Phalcon\Cli\Console */
                 $console = $this->mock->createForCli();
-
                 /** @var array */
                 $result = $console->getDI()->get('console');
 

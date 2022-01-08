@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Headio\Phalcon\Bootstrap\Di;
 
-use Phalcon\Config;
+use Phalcon\Config\ConfigInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\FactoryDefault\Cli;
@@ -21,11 +21,8 @@ use Phalcon\Di\FactoryDefault\Cli;
  */
 class Factory implements FactoryInterface
 {
-    private Config $config;
-
-    public function __construct(Config $config)
+    public function __construct(private ConfigInterface $config)
     {
-        $this->config = $config;
     }
 
     /**
@@ -54,19 +51,12 @@ class Factory implements FactoryInterface
     public function create(DiInterface $di): DiInterface
     {
         $config = $this->config;
-        $config->set('cli', false);
-
-        if ($di instanceof Cli) {
-            $config->set('cli', true);
-        }
-
+        $config->set('cli', $di instanceof Cli ?? false);
         $di->setShared('config', $config);
 
-        /**
-         * Register the service definitions
-         */
-        if (isset($config->services)) {
-            foreach ($config->services->toArray() ?? [] as $service) {
+        // Register the service provider definitions
+        if ($config->has('services')) {
+            foreach ($config->get('services')->toArray() ?? [] as $service) {
                 $di->register(new $service());
             }
         }

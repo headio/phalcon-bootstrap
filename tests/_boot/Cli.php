@@ -7,11 +7,11 @@
  */
 
 /**
- * Codeception integration bootstrap.
+ * Codeception bootstrap
  */
 use Headio\Phalcon\Bootstrap\Application\Factory as AppFactory;
 use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
