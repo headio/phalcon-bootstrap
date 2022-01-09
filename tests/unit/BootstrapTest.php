@@ -7,90 +7,89 @@
  */
 declare(strict_types=1);
 
-namespace Integration;
+namespace Unit;
 
-use Headio\Phalcon\Bootstrap\BootstrapInterface;
+use Headio\Phalcon\Bootstrap;
+use Headio\Phalcon\BootstrapInterface;
+use Headio\Phalcon\Bootstrap\Di\Factory as DiFactory;
+use Phalcon\Config\Config;
+use Phalcon\Di\Di;
+use Phalcon\Di\DiInterface;
+use Phalcon\Http\Response;
 use Phalcon\Http\ResponseInterface;
-use IntegrationTester;
+use Mockery;
+use Module\UnitTest;
 
-class MvcCest
+class BootstrapTest extends UnitTest
 {
-    private ?BootstrapInterface $bootstrap = null;
-
-    public function _before(IntegrationTester $I): void
+    protected function _after(): void
     {
-        $I->wantTo('Bootstrap mvc application using factory');
-
-        $bootstrap = $I->bootMvc($this->_config());
-
-        $I->assertInstanceOf(BootstrapInterface::class, $bootstrap);
-
-        $this->bootstrap = $bootstrap;
+        Di::reset();
     }
 
-    protected function _after(IntegrationTester $I): void
+    public function testCanCallFactoryMethod(): void
     {
-        $this->bootstrap = null;
-    }
+        $this->specify(
+            'Factory method creates expected bootstrap instance',
+            function () {
+                $config = new Config($this->_config());
 
-    public function executeRequestOnDefaultHandler(IntegrationTester $I): void
-    {
-        $I->wantTo('Execute request on default handler');
+                /** @var \Phalcon\Di\DiInterface */
+                $di = (new DiFactory($config))->createDefaultCli();
 
-        $_SERVER['REQUEST_METHOD'] = 'GET';
-        $_SERVER['REQUEST_URI'] = '/';
+                $mock = Mockery::mock(
+                    BootstrapInterface::class,
+                    Bootstrap::class
+                )
+                ->makePartial();
 
-        /** @var ResponseInterface|bool */
-        $response = $this->bootstrap->run(
-            $_SERVER['REQUEST_URI']
+                $mock->allows()
+                    ->handle()
+                    ->with(DiInterface::class)
+                    ->andReturnSelf()
+                ;
+
+                /** @var BootstrapInterface */
+                $result = $mock::handle($di);
+
+                expect($result)->isInstanceOf(BootstrapInterface::class);
+            }
         );
-
-        $I->assertEquals('Hello world', $response->getContent());
     }
 
-    public function executeRequestOnDefaultHandlerInDefaultModule(IntegrationTester $I): void
+    public function testCanCallHandleRequest(): void
     {
-        $I->wantTo('Execute named request on default handler');
+        $this->specify(
+            'handle method returns expected response',
+            function () {
+                $config = new Config($this->_config());
 
-        $_SERVER['REQUEST_METHOD'] = 'GET';
-        $_SERVER['REQUEST_URI'] = '/index/contact';
+                /** @var \Phalcon\Di\DiInterface */
+                $di = (new DiFactory($config))->createDefaultCli();
 
-        /** @var ResponseInterface|bool */
-        $response = $this->bootstrap->run(
-            $_SERVER['REQUEST_URI']
+                $mock = Mockery::mock(
+                    BootstrapInterface::class,
+                    'alias:MvcBootstrap'
+                )
+                ->makePartial();
+
+                $mock->allows()
+                    ->handle()
+                    ->with(DiInterface::class)
+                    ->andReturnSelf()
+                ;
+                $mock->allows()
+                    ->run()
+                    ->with(Mockery::type('array'))
+                    ->andReturn(new Response('Hello world'))
+                ;
+
+                /** @var BootstrapInterface */
+                $result = $mock::handle($di)->run($_SERVER);
+
+                expect($result)->isInstanceOf(ResponseInterface::class);
+            }
         );
-
-        $I->assertEquals('Hello contact', $response->getContent());
-    }
-
-    public function executeUnknownRoute(IntegrationTester $I): void
-    {
-        $I->wantTo('Execute request with unknown route');
-
-        $_SERVER['REQUEST_METHOD'] = 'GET';
-        $_SERVER['REQUEST_URI'] = '/foo/bar';
-
-        /** @var ResponseInterface|bool */
-        $response = $this->bootstrap->run(
-            $_SERVER['REQUEST_URI']
-        );
-
-        $I->assertEquals('Hello world', $response->getContent());
-    }
-
-    public function executeRequestOnAdminHandlerInKnownModule(IntegrationTester $I): void
-    {
-        $I->wantTo('Execute named request on admin handler in admin module');
-
-        $_SERVER['REQUEST_METHOD'] = 'GET';
-        $_SERVER['REQUEST_URI'] = '/admin';
-
-        /** @var ResponseInterface|bool */
-        $response = $this->bootstrap->run(
-            $_SERVER['REQUEST_URI']
-        );
-
-        $I->assertEquals('Hello admin world', $response->getContent());
     }
 
     private function _config(): array

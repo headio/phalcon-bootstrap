@@ -289,10 +289,7 @@ EOT;
         expect($ct->getOutput())->equals($expected);
     }
 
-    /**
-     * Return Test config
-     */
-    protected function _config(): array
+    private function _config(): array
     {
         return [
             'debug' => false,

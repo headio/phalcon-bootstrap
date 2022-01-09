@@ -51,6 +51,7 @@ final class ConsoleTester
      */
     public function execute(array $server): void
     {
+        /** @var TaskInterface */
         $this->task = $this->console->setArgument($server)->handle();
     }
 
