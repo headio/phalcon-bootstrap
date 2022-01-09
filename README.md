@@ -1,13 +1,13 @@
 # Phalcon application bootstrap
 
-A flexible application bootstrap for Phalcon4-based projects  
+A flexible application bootstrap for Phalcon-based projects  
 
-[![Build Status](https://travis-ci.com/headio/phalcon-bootstrap.svg?branch=master)](https://travis-ci.com/headio/phalcon-bootstrap) [![Coverage Status](https://coveralls.io/repos/github/headio/phalcon-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/headio/phalcon-bootstrap?branch=master)
+[![Build Status](https://travis-ci.com/headio/phalcon-bootstrap.svg?branch=5.x)](https://travis-ci.com/headio/phalcon-bootstrap) [![Coverage Status](https://coveralls.io/repos/github/headio/phalcon-bootstrap/badge.svg?branch=5.x)](https://coveralls.io/github/headio/phalcon-bootstrap?branch=5.x)
 
 ## Description
 
-This library provides flexible application bootstrapping, encapsulating module registration (or handler registration for micro applications), event management and middleware logic assignment.
-A simple factory instantiates the DI container, encapsulating the registration of service dependency definitions defined in the configuration setttings, for mvc, micro and cli applications.
+This library provides flexible application bootstrapping, encapsulating module registration (or handler registration for micro applications), event management and middleware logic assignment for mvc, micro and cli-based applications.
+A simple factory instantiates the dependency injection container, encapsulating the registration of service dependency definitions defined in the configuration setttings.
 
 ## Dependencies
 
@@ -153,7 +153,7 @@ require_once __DIR__ . '/vendor/autoload.php';
     set_error_handler(
         function ($severity, $message, $file, $line) {
             if (!(error_reporting() & $severity)) {
-                // unmasked error context
+                // Unmasked error context
                 return;
             }
             throw new \ErrorException($message, 0, $severity, $file, $line);
@@ -164,7 +164,7 @@ require_once __DIR__ . '/vendor/autoload.php';
         function (Throwable $e) use ($di) {
             $di->get('logger')->error($e->getMessage(), ['exception' => $e]);
 
-            // Verbose exception handling in development
+            // Verbose exception handling for development
             if ($di->get('config')->debug) {
             }
 
@@ -241,6 +241,7 @@ return [
     ],
     'applicationPath' => dirname(__DIR__) . DIRECTORY_SEPARATOR,
     'baseUri' => '/',
+    'debug' => true,
     'dispatcher' => [
         'defaultAction' => 'index',
         'defaultController' => 'Admin',
@@ -322,7 +323,7 @@ require_once __DIR__ . '/vendor/autoload.php';
     set_error_handler(
         function ($severity, $message, $file, $line) {
             if (!(error_reporting() & $severity)) {
-                // unmasked error context
+                // Unmasked error context
                 return;
             }
             throw new \ErrorException($message, 0, $severity, $file, $line);
@@ -333,7 +334,7 @@ require_once __DIR__ . '/vendor/autoload.php';
         function (Throwable $e) use ($di) {
             $di->get('logger')->error($e->getMessage(), ['exception' => $e]);
 
-            // Verbose exception handling in development
+            // Verbose exception handling for development
             if ($di->get('config')->debug) {
             }
 
@@ -398,6 +399,7 @@ return [
         DIRECTORY_SEPARATOR . 'Var' .
         DIRECTORY_SEPARATOR . 'Log' .
         DIRECTORY_SEPARATOR,
+    'debug' => true,
     'dispatcher' => [
         'defaultTaskNamespace' => 'Foo\\Task',
     ],
@@ -436,7 +438,7 @@ require_once __DIR__ . '/vendor/autoload.php';
     set_error_handler(
         function ($severity, $message, $file, $line) {
             if (!(error_reporting() & $severity)) {
-                // unmasked error context
+                // Unmasked error context
                 return;
             }
             throw new \ErrorException($message, 0, $severity, $file, $line);
@@ -449,7 +451,7 @@ require_once __DIR__ . '/vendor/autoload.php';
             $output = $di->get('consoleOutput');
             $output->writeln('<error>' . $e->getMessage() . '</error>');
 
-            // Verbose exception handling in development
+            // Verbose exception handling for development
             if ($di->get('config')->debug) {
                 $output->writeln(sprintf(
                     '<error>Exception thrown in: %s at line %d.</error>',
@@ -528,20 +530,20 @@ class Router implements ServiceProviderInterface
     {
         $di->setShared(
             'router',
-            function () {
-                $config = $this->get('config');
+            function () use ($di) {
+                $config = $di->get('config');
 
-                if ($config->cli) {
+                if ($config->get('cli')) {
                     $service = new CliService();
                     $service->setDefaultModule($config->dispatcher->defaultTaskModule);
                     return $service;
                 }
 
-                if (!isset($config->modules)) {
+                if (!$config->has('modules')) {
                     throw new OutOfRangeException('Undefined modules');
                 }
 
-                if (!isset($config->routes)) {
+                if (!$config->has('routes')) {
                     throw new OutOfRangeException('Undefined routes');
                 }
 
@@ -552,11 +554,11 @@ class Router implements ServiceProviderInterface
                 $service->setDefaultController($config->dispatcher->defaultController);
                 $service->setDefaultAction($config->dispatcher->defaultAction);
 
-                foreach ($config->modules->toArray() ?? [] as $module => $settings) {
+                foreach ($config->get('modules')->toArray() ?? [] as $module => $settings) {
                     if (!$config->routes->get($module, false)) {
                         continue;
                     }
-                    foreach ($config->routes->{$module}->toArray() ?? [] as $key => $val) {
+                    foreach ($config->get('routes')->{$module}->toArray() ?? [] as $key => $val) {
                         $service->addModuleResource($module, $key, $val);
                     }
                 }
