@@ -16,7 +16,7 @@ use Phalcon\Cli\TaskInterface;
 
 class Bootstrap implements BootstrapInterface
 {
-    public function __construct(private FactoryInterface $factory)
+    final public function __construct(private FactoryInterface $factory)
     {
     }
 
@@ -27,7 +27,7 @@ class Bootstrap implements BootstrapInterface
     {
         $factory = new Factory($di);
 
-        return new self($factory);
+        return new static($factory);
     }
 
     /**

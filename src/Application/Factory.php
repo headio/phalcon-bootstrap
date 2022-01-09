@@ -38,13 +38,13 @@ class Factory implements FactoryInterface
         $config = $di->get('config');
 
         if ($config->has('modules')) {
-            $app->registerModules($config->get('modules')->toArray());
+            $app->registerModules($config->get('modules')?->toArray() ?? []);
         }
 
         $eventManager = $di->get('eventsManager');
 
         if ($config->has('middleware')) {
-            foreach ($config->get('middleware')->toArray() ?? [] as $middleware) {
+            foreach ($config->get('middleware')?->toArray() ?? [] as $middleware) {
                 $instance = new $middleware();
                 $eventManager->attach('console', $instance);
             }
@@ -80,7 +80,7 @@ class Factory implements FactoryInterface
         $eventManager->enablePriorities(true);
 
         if ($config->has('middleware')) {
-            foreach ($config->get('middleware')->toArray() ?? [] as $middleware => $event) {
+            foreach ($config->get('middleware')?->toArray() ?? [] as $middleware => $event) {
                 $instance = new $middleware();
                 $priority = $eventManager::DEFAULT_PRIORITY;
 
@@ -109,13 +109,13 @@ class Factory implements FactoryInterface
         $app->useImplicitView($config->has('view') ?? false);
 
         if ($config->has('modules')) {
-            $app->registerModules($config->get('modules')->toArray());
+            $app->registerModules($config->get('modules')?->toArray() ?? []);
         }
 
         $eventManager = $di->get('eventsManager');
 
         if ($config->has('middleware')) {
-            foreach ($config->get('middleware')->toArray() ?? [] as $middleware) {
+            foreach ($config->get('middleware')?->toArray() ?? [] as $middleware) {
                 $instance = new $middleware();
                 $eventManager->attach('application', $instance);
             }

@@ -14,9 +14,9 @@ use Headio\Phalcon\Bootstrap\Application\FactoryInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Http\ResponseInterface;
 
-final class Bootstrap implements BootstrapInterface
+class Bootstrap implements BootstrapInterface
 {
-    public function __construct(private FactoryInterface $factory)
+    final public function __construct(private FactoryInterface $factory)
     {
     }
 
