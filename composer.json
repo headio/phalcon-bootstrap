@@ -39,7 +39,9 @@
     },
     "scripts": {
         "lint": "php-cs-fixer fix --diff --dry-run",
-        "fix": "php-cs-fixer fix"
+        "fix": "php-cs-fixer fix",
+        "test": "vendor/bin/codecept clean; vendor/bin/codecept build; vendor/bin/codecept run -f",
+        "psalm": "vendor/bin/psalm src --no-cache"
     },
     "autoload": {
         "psr-4": {
