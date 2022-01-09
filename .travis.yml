@@ -37,7 +37,7 @@ before_install:
 
 install:
   - pecl install --force psr
-  - .ci/install-phalcon.sh
+  - travis_wait .ci/install-phalcon.sh
   - travis_retry composer update --no-interaction --no-progress --no-ansi --no-suggest
 
 before_script:
