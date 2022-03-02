@@ -33,7 +33,7 @@ class Bootstrap implements BootstrapInterface
     /**
      * {@inheritDoc}
      */
-    public function run(string $uri, ?int $context = null): bool|ResponseInterface
+    public function run(string $uri, ?int $context = null): mixed
     {
         if ($context === Bootstrap::Micro) {
             return $this->factory->createForMicro()->handle($uri);

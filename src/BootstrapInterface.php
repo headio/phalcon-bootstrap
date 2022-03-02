@@ -24,5 +24,5 @@ interface BootstrapInterface
     /**
      * Run the mvc (or micro) application and return the response.
      */
-    public function run(string $uri, ?int $context): bool|ResponseInterface;
+    public function run(string $uri, ?int $context): mixed;
 }
